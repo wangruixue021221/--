@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+    <title>注册</title>
+    <style>
+*{
+            padding: 0;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .bigbox{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+     }
+     .tupian{
+         background-image: url(img.png);
+         background-repeat: no-repeat;
+         width: 400px;
+         height: 100%;
+         position: fixed;
+         background-size: 100% 100%;
+     }
+     .xiaomi{
+         width: 700px;
+         height: 100%;
+         position: relative;
+         left: 380px;
+     }
+     .guanwang{
+         height: 60px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .tu{
+         height: 60px;
+         position: relative;
+         top: 10px;
+         left: 20px;
+     }
+     .tu span{
+        font-size: 25px;
+         color: black;
+         position: relative;
+         top: -20px;
+     }
+     .wen{
+         width: 400px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+         position: relative;
+         left: 140px;
+     }
+     .jiange{
+         width: 300px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .jiange a{
+         text-decoration: none;
+         color: gray;
+         font-size: 14px;
+         height: 60px;
+         width: 100px;
+         text-align: center;
+         line-height: 60px;
+     }
+     .wujiange{
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+     }
+     .wujiange a{
+        text-decoration: none;
+         color: gray;
+         font-size: 14px;
+         height: 60px;
+         width: 100px;
+         text-align: center;
+         position: relative;
+         top: -1px;
+     }
+     .tu img{
+         width: 80px;
+         height: 50px;
+     }
+    .jiange span{
+         font-size: 18px;
+         color: rgb(189, 187, 187);
+         position: relative;
+         top: 17px;
+    }
+    .dengluzhuce{
+         width: 450px;
+         height: 650px;
+         border: 3.5px solid orange;
+         position: relative;
+         border-radius: 15%;
+         top: 70px;
+         left: 220px;
+     }
+     .mima{
+         height: 50px;
+         width: 445px;
+         color: black;
+         font-size: 34px;
+         text-align: center;
+         line-height: 50px;
+         font-weight: 34px;
+         border-bottom: 1px solid orange;
+     }
+     .guojia{
+         width: 404px;
+         height: 20px;
+         background-color: white;
+         border: 0.3px solid rgb(143, 141, 141);
+         border-bottom: none;
+         position: relative;
+         left: 25px;
+         color: gray;
+         font-size: 13px;
+         line-height: 20px;
+     }
+     #shouji{
+         width: 400px;
+         height: 40px;
+         background-color: white;
+         position: relative;
+         left: 25px;
+         color: black;
+         margin: 0 auto;
+         font-size: 19px;
+     }
+     .liangce{
+         width: 450px;
+         position: relative;
+         left: 25px;
+         margin: 0 auto;
+         height: 40px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .baliu{
+         width: 65px;
+         height: 40px;
+         line-height: 40px;
+         color: black;
+         font-size: 20px;
+         border: 0.3px solid rgb(153, 149, 149);
+         border-right: none;
+     }
+     .baliu span{
+         color: gray;
+         font-size: 14px;
+     }
+     #mima1{
+        width: 340px;
+         height: 40px;
+         position: relative;
+         left: -45px;
+         background-color: white;
+         border: 0.3px solid rgb(153, 149, 149);
+         color: gray;
+         font-size: 18px;
+     }
+     .empty2{
+         height: 30px;
+     }
+     #btn{
+         width: 405px;
+         height: 50px;
+         background-color: rgb(252, 200, 140);
+         color: white;
+         font-size: 24px;
+         text-align: center;
+         line-height: 50px;
+         position: relative;
+         left: 25px;
+     }
+     .gongju{
+         width: 400px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+         position: relative;
+         left: 30px;
+     }
+     .huawai{
+        color: rgb(218, 148, 19);
+        font-size: 17px;
+        cursor: pointer;
+     }
+     .empty3{
+         height: 90px;
+     }
+     .disanfang{
+         width: 400px;
+         text-align: center;
+         font-size: 18px;
+         position: relative;
+         left: 30px;
+         color: rgb(197, 194, 194);
+     }
+     .liangge1{
+         width: 400px;
+         display: flex;
+         height: 40px;
+         position: relative;
+         left: 30px;
+         line-height: 40px;
+         justify-content: center;
+         flex-direction: row;
+     }
+     .liangge1 a{
+         text-decoration: none;
+         width: 35px;
+         height: 35px;
+         border-radius: 50%;
+     }
+     #zhi{
+        text-decoration: none;
+         width: 35px;
+         height: 35px;
+         border-radius: 50%; 
+         background-image: url(imh2.png);
+         background-repeat: no-repeat;
+         background-size: 100% 100%;
+     }
+     #qq{
+        text-decoration: none;
+         width: 35px;
+         height: 35px;
+         border-radius: 50%; 
+         background-image: url(img3.png);
+         background-repeat: no-repeat;
+         background-size: 100% 100%;
+     }
+     .liangge1 a img{
+         width: 35px;
+         height: 35px;
+         border-radius: 50%;
+     }
+     .empty5{
+         height: 15px;
+     }
+     .empty1{
+         height: 50px;
+     }
+     #mima2{
+        width: 405px;
+         height: 40px;
+         margin: 0 auto;
+         position: relative;
+         left: 25px;
+         background-color: white;
+         border: 0.3px solid rgb(153, 149, 149);
+         color: gray;
+         font-size: 18px;
+     }
+    </style>
+</head>
+<body>
+    <div class="bigbox">
+        <div class="tupian"></div>
+    </div>
+    <div class="xiaomi">
+       <div class="guanwang">
+           <div class="tu"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0402%2F4c306de2j00qqx47u000wc000u000g2m.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg&refer=http%3A%2F%2Fnimg.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1646879737&t=8b93cca527c9f6677439d656fc5e87dd" alt=""><span>小米账号</span></div>
+           <div class="wen">
+               <div class="jiange"><a href="">用户协议</a><a href="">隐私政策</a><a href="" id="xian">帮助中心</a><span>|</span></div>
+               <div class="wujiange"><a href="">中文(简体)&gt</a></div>
+           </div>
+       </div>
+       <div class="dengluzhuce">
+        <div class="mima">注     册</div>
+        <div class="empty1"></div>
+        <form action="">
+        <div class="guojia">国家/地区</div>
+        <input type="text" name="guojiadiqu" id="shouji" placeholder="中国                                                                    &#9660">
+        <div class="empty2"></div>
+        <div class="guojia">国家码</div>
+        <div class="liangce">
+            <div class="baliu">+86  <span>&#9660</span></div>
+        <input type="text" name="shoujihao" id="mima1" placeholder="手机号">
+        </div>
+        <div class="empty2"></div>
+        <input type="password" name="mima" id="mima2" placeholder="密码">
+        <div class="empty2"></div>
+        <input type="button" id="btn" value="注             册">
+        </form>
+        <div class="empty2"></div>
+        <div class="gongju">
+        <div class="huawai">收不到验证码?</div>
+        <div class="huawai"></div>
+        </div>
+        <div class="empty3"></div>
+        <div class="disanfang">-----------------------其他方式登录------------------------</div>
+        <div class="empty5"></div>
+        <div class="liangge1"><a href="https://www.alipay.com/" id="zhi"></a>&nbsp&nbsp&nbsp&nbsp<a href="https://im.qq.com/index" id="qq"></a>&nbsp&nbsp&nbsp&nbsp<a href="https://www.douban.com/accounts/connect/wechat/?from=None&redir=https%3A//www.douban.com/people/252939035/%3F_i%3D4477491308JUaU%2C4495269308JUaU"><img src="https://img0.baidu.com/it/u=2178889687,3517608568&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=506" alt=""></a>&nbsp&nbsp&nbsp&nbsp<a href="https://www.douban.com/accounts/connect/sina_weibo/?from=None&redir=https%3A//www.douban.com/people/252939035/%3F_i%3D4477491308JUaU%2C4495269308JUaU&fallback="><img src="http://img.uuwtq.com/uploads/i_1_4207981259x347318880_27.jpg" alt=""></a></div>
+    </div>
+        </div>
+</body>
+<script>
+$("#btn").on("click",function(){
+    var retel =/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/g;
+    var shouji=retel.test($("#mima1")[0].value);
+    var pasw=$("#mima2").value.length>=6;
+if(!pasw){
+    console.log("密码不能少于六位");
+}
+if(!shouji){
+    console.log("请输入正确的手机号");
+}
+if(pasw&&shouji){
+    axios({
+  url: "http://180.76.185.37:3000/register",
+  method: "post",
+  headers:{
+       'Content-Type':'application/json'
+   },
+  data: {
+    username: "18780067969",
+    password: "wj123456",
+    name: "admin",
+  },
+}).then((res3) => {
+  console.log(res3.data);
+});
+};
+})
+var res3={
+  message: '注册成功,快登录试试吧!!',
+  state: 1,
+  result: {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0
+  }
+}
+axios({
+    url: "http://180.76.185.37:3000/getUserData",
+    method: "post",
+    headers:{
+       'Content-Type':'application/json'
+   },
+    data: {
+      token:
+       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwidGltZSI6MTQsImlhdCI6MTY0NDgyNTE2M30.2HBde_7jLzM_ks359oaLBFObeIwz0eXFS8Q_mzY1aBE"
+    },
+  }).then((res7) => {
+    console.log(res7.data);
+  });
+  var res7={
+    message: '获取成功!',
+    state: 1,
+    result: [
+      {
+        username: '18780067969',
+        password: 'wj123456',
+        token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExMSIsInRpbWUiOjI1LCJpYXQiOjE2NDA0MzYwNjV9.PoMktv9k9b5zL-DzM8y9nstV_657_Nxwd3fd7KvDwys',
+        name: 'admin'
+      },
+   ]
+  }
+  axios({
+  url: "http://180.76.185.37:3000/deleteUser",
+  method: "post",
+  headers:{
+       'Content-Type':'application/json'
+   },
+  data: {
+    username: "18780067969",
+  },
+}).then((res8) => {
+  console.log(res8.data);
+});
+var res8=
+    {
+  message: '删除成功!',
+  state: 1,
+  result: {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0
+  }
+}
+</script>
+</html>
