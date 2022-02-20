@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>分类选电影</title>
+</head>
+<style>
+*{
+         padding: 0;
+         margin: 0;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+     }
+     .black{
+         width: 100%;
+         height: 25px;
+         background-color: rgb(68, 68, 68);
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .one1{
+         width: 600px;
+         height: 25px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .one1 a{
+         text-decoration: none;
+         height: 25px;
+     }
+     .two{
+         width: 200px;
+         height: 25px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .black a{
+         display: block;
+         font-size: 13px;
+         color: rgb(187, 184, 184);
+         text-decoration: none;
+         position: relative;
+         top: 5px;
+     }
+     .black a:hover{
+         color: white;
+     }
+     .blue{
+         width: 100%;
+         height: 120px;
+         background-color: rgb(245, 246, 248);
+     }
+     .big{
+         width: 100%;
+         height: 80px;
+         display: flex;
+         justify-content: center;
+         flex-direction: row;
+         position: relative;
+         top: 20px;
+         left: -200px;
+     }
+     .big a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 30px;
+         font-weight: 35px;
+     }
+     .big input{
+         width: 500px;
+         height: 30px;
+         background-color: white;
+         font-size: 14px;
+         color: gray;
+         position: relative;
+         border: 0.5px solid rgb(196, 195, 195);
+         top: -5px;
+     }
+     #btn{
+         width: 30px;
+         height: 30px;
+         background-image: url(img.jfif);
+         background-repeat: no-repeat;
+         background-size: 100% 30px;
+         position: relative;
+         border: 0.5px solid rgb(196, 195, 195);
+         top: 5px;
+     }
+     .small{
+         width: 700px;
+         height: 38px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .small a{
+         text-decoration: none;
+         font-size: 15px;
+         color: rgb(47, 115, 216);
+         position: relative;
+         height: 25px;
+         line-height: 25px;
+         top: 8px;
+         left: 65px;
+     }
+     .small a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+     .niandu{
+         z-index: 2;
+         width: 220px;
+         text-decoration: none;
+         display: block;
+         height: 100px;
+         background-image: url(img2.jfif);
+         background-repeat: no-repeat;
+         background-size: 100% 100px;
+         position: relative;
+         left: 800px;
+         top: -110px;
+     }
+     .empty{
+         width: 100%;
+        height: 20px;
+        background-color: white;
+     }
+     .bigbox{
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         flex-direction: row;
+         position: relative;
+         top: -40px;
+         left: -60px;
+     }
+     .leftbox{
+         width: 650px;
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: column;
+     }
+     .rightbox{
+         width: 300px;
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: column;
+     }
+     .xuanyingshi{
+         font-size: 25px;
+         font-weight: 400;
+     }
+     .fenleixuan1{
+         height: 25px;
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: row;
+     }
+     .fenleixuan2{
+         height: 25px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .fenleixuan2 a{
+         text-decoration: none;
+         font-size: 14px;
+         color: black;
+         height: 25px;
+         line-height: 25px;
+     }
+     .fenleixuan1 a{
+         text-decoration: none;
+         font-size: 14px;
+         color: black;
+         height: 25px;
+         line-height: 25px;
+     }
+     .fenleixuan1 a:hover{
+         color: rgb(47, 115, 216);
+     }
+     .fenleixuan2 a:hover{
+         color: rgb(47, 115, 216);
+     }
+     #lansexuan{
+         text-decoration: none;
+         width: 70px;
+         height: 25px;
+         background-color: rgb(47, 115, 216);
+         font-size: 15px;
+         color: white;
+         line-height: 25px;
+         text-align: center;
+         display: block;
+     }
+     .empty1{
+         height: 10px;
+     }
+     #huisexuan{
+         text-decoration: none;
+         color: gray;
+         font-size: 14px;
+     }
+     #huisexuan a:hover{
+         color: rgb(47, 115, 216);
+     }
+     .empty2{
+         height: 20px;
+     }
+     .huida{
+         height: 90px;
+         background-color: rgb(241, 240, 240);
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: row;
+     }
+     .erweima{
+         width: 90px;
+         height: 90px;
+     }
+     .erweima a{
+         text-decoration: none;
+     }
+     .erweima a img{
+         width: 90px;
+         height: 90px;
+     }
+     .lvzi{
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+         position: relative;
+         top: 25px;
+     }
+     .guanwang{
+         width: 40px;
+         height: 40px;
+     }
+     .guanwang a{
+         text-decoration: none;
+     }
+     .guanwang a img{
+         width: 40px;
+         height: 40px;
+     }
+    .zi{
+        height: 90px;
+        text-align: center;
+    }
+    .da{
+        font-size: 18px;
+    }
+    .xiao{
+        font-size: 14px;
+    }
+    .empty3{
+        height: 30px;
+    }
+    .xuanze{
+        position: relative;
+        z-index: 1000000000000;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .yonghu1{
+        position: relative;
+        z-index: 1000000000000;
+    }
+    .kuang{
+        width: 320px;
+        height: 30px;
+        border: 0.5px solid gray;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    #m1{
+        display: block;
+        text-decoration: none;
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        color: rgb(47, 115, 216);
+        border: 0.5px solid rgb(47, 115, 216);
+    }
+    #m2{
+        display: block;
+        text-decoration: none;
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+        color: gray;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+    }
+    #m3{
+        display: block;
+        text-decoration: none;
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+        color: gray;
+        cursor: pointer;
+        text-align: center;
+        line-height: 30px;
+    }
+    #m4{
+        display: block;
+        text-decoration: none;
+        width: 80px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 14px;
+        color: gray;
+        text-align: center;
+        line-height: 30px;
+    }
+    .bofang{
+        width: 300px;
+        height: 30px;
+        display: flex;
+        line-height: 30px;
+        justify-content: space-around;
+        flex-direction: row;
+        
+    }
+    #m5{
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        font-size: 14px;
+        width: 50px;
+        line-height: 30px;
+        text-align: center;
+        height: 30px;
+        color: gray;
+    }
+    #m6{
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        font-size: 14px;
+        width: 60px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: gray;
+    }
+    #m7{
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        width: 100px;
+        height: 30px;
+        color: gray;
+    }
+    .tupian{
+        height: 30px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        position: relative;
+        top: 5px;
+    }
+    .tupian #diyi{
+        text-decoration: none;
+        width: 20px;
+        height: 20px;
+        background-image: url(imga.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .tupian #dier{
+        text-decoration: none;
+        width: 20px;
+        height: 20px;
+        background-image: url(imgb.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .empty4{
+        height: 40px;
+    }
+    .gengduo{
+        height: 40px;
+        display: block;
+        text-decoration: none;
+        background-color: rgb(241, 240, 240);
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 18px;
+        color: rgb(47, 115, 216);
+    }
+    .gengduo:hover{
+        background-color: rgb(223, 221, 221);
+    }
+    .m11{
+        display: flex;
+        position: relative;
+        z-index: 1;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    .one{
+        height: 170px;
+        width: 650px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .one a{
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        width: 120px;
+        height: 170px;
+    }
+    .one a img{
+        width: 120px;
+        height: 150px;
+    }
+    .one a .oneo{
+        font-size: 13px;
+        width: 120px;
+        color: black;
+        text-align: center;
+    }
+    .one a .gold{
+        font-size: 11px;
+        color: gold;
+        text-align: center;
+    }
+    #m111{
+        position: relative;
+    }
+    #m222{
+        position: relative;
+        display: none;
+    }
+    #m333{
+        position: relative;
+        display: none;
+    }
+    #m444{
+        position: relative;
+        display: none;
+    }
+    #m5551{
+       position: relative;
+       display: none;
+    }
+    #m5552{
+       position: relative;
+       display: none;
+    }
+    #m5553{
+       position: relative;
+       display: none;
+    }
+    #m5554{
+       position: relative;
+       display: none;
+    }
+    #m6661{
+       position: relative;
+       display: none;
+    }
+    #m6662{
+       position: relative;
+       display: none;
+    }
+    #m6663{
+       position: relative;
+       display: none;
+    }
+    #m6664{
+       position: relative;
+       display: none;
+    }
+    .shaixuan{
+        width: 220px;
+        height: 40px;
+        background-color: white;
+        font-size: 15px;
+        color: black;
+        text-align: center;
+        line-height: 40px;
+        position: relative;
+        z-index: 1000;
+        top: -620px;
+        left: 450px;
+    }
+    .shaixuan a{
+        text-decoration: none;
+        font-size: 17px;
+        cursor: pointer;
+        color: rgb(47, 115, 216);
+        height: 40px;
+        line-height: 40px;
+    }
+</style>
+<body>
+     <div class="black">
+        <div class="one1">
+            <a href="豆瓣.html">豆瓣</a><a href="">读书</a><a href="">电影</a><a href="">音乐</a><a href="">同城</a><a href="">小组</a><a href="">阅读</a><a href="">FM</a><a href="">时间</a><a href="">豆品</a>
+        </div>
+        <div class="two">
+            <a href="">下载豆瓣客户端</a><a href="登录注册.html" target="_blank">登录/注册</a>
+        </div>
+    </div>
+    <div class="blue">
+        <div class="big">
+            <div><a href="豆瓣.html">豆瓣电影</a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <div class="container">
+                <div class="bgDiv">
+                <input type="text" name="搜索" id="sousuo" placeholder="搜索电影,电视剧,综艺,影人"><input type="button" class="searchButton" id="btn">
+                <div class="suggest">
+             <ul id="search-result">
+             </ul>
+                </div> 
+                </div>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="small">
+            <a href="">影讯&购票</a><a href="">选电影</a><a href="">电视剧</a><a href="">排行榜</a><a href="分类选电影.html">分类</a><a href="">影评</a><a href="">2021年度榜单</a><a href="">2021书影音报告</a>
+        </div>
+    </div>
+    <a class="niandu" href=""></a>
+    <div class="bigbox">
+        <div class="leftbox">
+            <div class="yonghu1">
+    <div class="xuanyingshi">选影视</div>
+    <div class="empty"></div>
+    <div class="fenleixuan1"><a href="" id="lansexuan">全部形式</a>&nbsp&nbsp&nbsp&nbsp<a href="">电影</a>&nbsp&nbsp&nbsp&nbsp<a href="">电视剧</a>&nbsp&nbsp&nbsp&nbsp<a href="">综艺</a>&nbsp&nbsp&nbsp&nbsp<a href="">动漫</a>&nbsp&nbsp&nbsp&nbsp<a href="">纪录片</a>&nbsp&nbsp&nbsp&nbsp<a href="">短片</a></div>
+    <div class="empty1"></div>
+    <div class="fenleixuan2"><a href="" id="lansexuan">全部类型</a><a href="">剧情</a><a href="">喜剧</a><a href="">动作</a><a href="">爱情</a><a href="">科幻</a><a href="">动画</a><a href="">悬疑</a><a href="">惊悚</a><a href="">恐怖</a><a href="">犯罪</a>
+        <a href="">同性</a></div>
+      <div class="empty1"></div>
+        <div class="fenleixuan2">
+        <a href="">音乐</a><a href="">歌舞</a><a href="">传记</a><a href="">历史</a><a href="">战争</a><a href="">西部</a><a href="">奇幻</a><a href="">冒险</a><a href="">灾难</a><a href="">武侠</a><a href="">情色</a>
+    </div>
+    <div class="empty1"></div>
+    <div class="fenleixuan2"><a href="" id="lansexuan">全部地区</a><a href="">中国大陆</a>
+      <a href="">欧美</a><a href="">美国</a><a href="">中国香港</a><a href="">中国台湾</a><a href="">日本</a>
+        <a href="">韩国</a><a href="">英国</a><a href="">法国</a><a href="">德国</a>
+    </div>
+    <div class="empty1"></div>
+    <div class="fenleixuan2">
+    <a href="">意大利</a>
+    <a href="">西班牙</a><a href="">印度</a><a href="">泰国</a><a href="">俄罗斯</a><a href="">伊朗</a><a href="">加拿大</a><a href="">澳大利亚</a><a href="">爱尔兰</a><a href="">瑞典</a><a href="">巴西</a><a href="">丹麦</a>
+    </div>
+    <div class="empty1"></div>
+    <div class="fenleixuan2">
+        <a href="" id="lansexuan">全部年代</a>
+        <a href="">2022</a><a href="">2021</a>
+        <a href="">2020</a><a href="">2019</a><a href="">2010年代</a><a href="">2000年代</a><a href="">90年代</a><a href="">80年代</a><a href="">70年代</a><a href="">60年代</a><a href="">更早</a>
+    </div>
+    <div class="empty1"></div>
+    <div class="fenleixuan1">
+        <a href="" id="lansexuan">全部特色</a>&nbsp&nbsp&nbsp&nbsp<a href="">经典</a>&nbsp&nbsp&nbsp&nbsp<a href="">青春</a>&nbsp&nbsp&nbsp&nbsp<a href="">文艺</a>
+        &nbsp&nbsp&nbsp&nbsp<a href="">搞笑</a>&nbsp&nbsp&nbsp&nbsp<a href="">励志</a>&nbsp&nbsp&nbsp&nbsp<a href="">魔幻</a>&nbsp&nbsp&nbsp&nbsp
+        <a href="">感人</a>&nbsp&nbsp&nbsp&nbsp<a href="" id="huisexuan">&#10010自定义标签</a>
+    </div>
+    </div>
+    <div class="empty2"></div>
+    <div class="xuanze">
+        <div class="kuang"><a id="m1">近期热门</a><a id="m2">标记最多</a><a id="m3">评分最高</a><a id="m4">最新上映</a></div>
+        <div class="bofang"><a id="m5">可播放</a><a id="m6">我没看过</a><a id="m7">评分区间筛选&gt</a></div>
+        <div class="tupian"><a href="" id="diyi"></a>&nbsp&nbsp<a href="" id="dier"></a></div>
+    </div>
+    <div class="empty3"></div>
+    <div class="m11" id="m111">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2681329386.webp" alt=""><br><span class="oneo">长津湖</span>&nbsp<span class="gold">7.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2681336608.webp" alt=""><br><span class="oneo">兰心大剧院</span>&nbsp<span class="gold">7.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2677934359.webp" alt=""><br><span class="oneo">鱿鱼游戏</span>&nbsp<span class="gold">7.6</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2683055011.webp" alt=""><br><span class="oneo">我和我的父辈</span>&nbsp<span class="gold">6.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2695961421.webp" alt=""><br><span class="oneo">摩加迪沙</span>&nbsp<span class="gold">8.1</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2675827902.webp" alt=""><br><span class="oneo">脱口秀大会&nbsp第四季</span>&nbsp<span class="gold">7.6</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2687443734.webp" alt=""><br><span class="oneo">沙丘</span>&nbsp<span class="gold">7.7</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2677520025.webp" alt=""><br><span class="oneo">失控玩家</span>&nbsp<span class="gold">7.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2676295767.webp" alt=""><br><span class="oneo">俗女养成记2</span>&nbsp<span class="gold">9.3</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2675934255.webp" alt=""><br><span class="oneo">海岸村恰恰恰</span>&nbsp<span class="gold">8.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2673412189.webp" alt=""><br><span class="oneo">怒火.重案</span>&nbsp<span class="gold">7.2</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m222">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p511118051.webp" alt=""><br><span class="oneo">这个杀手不太冷</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.webp" alt=""><br><span class="oneo">流浪地球</span>&nbsp<span class="gold">7.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.webp" alt=""><br><span class="oneo">泰坦尼克号</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.webp" alt=""><br><span class="oneo">阿甘正传</span>&nbsp<span class="gold">9.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2616355133.webp" alt=""><br><span class="oneo">盗梦空间</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561716440.webp" alt=""><br><span class="oneo">霸王别姬</span>&nbsp<span class="gold">9.6</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2401676338.webp" alt=""><br><span class="oneo">摔跤吧!爸爸</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.webp" alt=""><br><span class="oneo">哪吒之魔童降世</span>&nbsp<span class="gold">8.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p579729551.webp" alt=""><br><span class="oneo">三傻大闹宝莱坞</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529206747.webp" alt=""><br><span class="oneo">西虹市首富</span>&nbsp<span class="gold">6.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p501177648.webp" alt=""><br><span class="oneo">怦然心动</span>&nbsp<span class="gold">9.1</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m333">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2187837276.webp" alt=""><br><span class="oneo">是,大臣&nbsp第二季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837418.webp" alt=""><br><span class="oneo">是,大臣&nbsp第三季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2247237724.webp" alt=""><br><span class="oneo">猫和老鼠</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2200410776.webp" alt=""><br><span class="oneo">老友记&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2375152053.webp" alt=""><br><span class="oneo">老友记&nbsp第四季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2607457336.webp" alt=""><br><span class="oneo">老友记&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2579918159.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2330977709.webp" alt=""><br><span class="oneo">老友记&nbsp第五季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187822907.webp" alt=""><br><span class="oneo">老友记&nbsp第十季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2228920659.webp" alt=""><br><span class="oneo">老友记&nbsp第六季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2607463440.webp" alt=""><br><span class="oneo">老友记&nbsp第七季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2492804476.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837239.webp" alt=""><br><span class="oneo">是,大臣&nbsp第一季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2381935440.webp" alt=""><br><span class="oneo">排球少年&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2187836471.webp" alt=""><br><span class="oneo">是,首相&nbso第一季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m444">
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867299847.webp" alt=""><br><span class="oneo">十年一品温如言</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2867146164.webp" alt=""><br><span class="oneo">好想去你的世界爱你</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867881232.webp" alt=""><br><span class="oneo">不要忘记我爱你</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2707594457.webp" alt=""><br><span class="oneo">陪你一起好好吃饭</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2824692330.webp" alt=""><br><span class="oneo">惹不起的千岁大人</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2702404261.webp" alt=""><br><span class="oneo">金鱼妻</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2861039283.webp" alt=""><br><span class="oneo">三个冬天</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2868242393.webp" alt=""><br><span class="oneo">天王助理</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2856637465.webp" alt=""><br><span class="oneo">像这样的夏天</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867418919.webp" alt=""><br><span class="oneo">花之战</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867467489.webp" alt=""><br><span class="oneo">动荡</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2844247258.webp" alt=""><br><span class="oneo">婚情咨文&nbsp第二季</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867979973.webp" alt=""><br><span class="oneo">农家女婿和千金媳妇</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2646695102.webp" alt=""><br><span class="oneo">恐怖美国&nbsp第二章</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2646418759.webp" alt=""><br><span class="oneo">疯狂爱情家</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m5551">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2681329386.webp" alt=""><br><span class="oneo">长津湖</span>&nbsp<span class="gold">7.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2681336608.webp" alt=""><br><span class="oneo">兰心大剧院</span>&nbsp<span class="gold">7.2</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2683055011.webp" alt=""><br><span class="oneo">我和我的父辈</span>&nbsp<span class="gold">6.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2675827902.webp" alt=""><br><span class="oneo">脱口秀大会&nbsp第四季</span>&nbsp<span class="gold">7.6</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2687443734.webp" alt=""><br><span class="oneo">沙丘</span>&nbsp<span class="gold">7.7</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2677520025.webp" alt=""><br><span class="oneo">失控玩家</span>&nbsp<span class="gold">7.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2673412189.webp" alt=""><br><span class="oneo">怒火.重案</span>&nbsp<span class="gold">7.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2673420377.webp" alt=""><br><span class="oneo">盛夏未来</span>&nbsp<span class="gold">7.1</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.webp" alt=""><br><span class="oneo">泰坦尼克号</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.webp" alt=""><br><span class="oneo">阿甘正传</span>&nbsp<span class="gold">9.5</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2666591984.webp" alt=""><br><span class="oneo">中国医生</span>&nbsp<span class="gold">6.9</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m5552">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.webp" alt=""><br><span class="oneo">流浪地球</span>&nbsp<span class="gold">7.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.webp" alt=""><br><span class="oneo">泰坦尼克号</span>&nbsp<span class="gold">9.4</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.webp" alt=""><br><span class="oneo">阿甘正传</span>&nbsp<span class="gold">9.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2616355133.webp" alt=""><br><span class="oneo">盗梦空间</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561716440.webp" alt=""><br><span class="oneo">霸王别姬</span>&nbsp<span class="gold">9.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2401676338.webp" alt=""><br><span class="oneo">摔跤吧!爸爸</span>&nbsp<span class="gold">9.0</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.webp" alt=""><br><span class="oneo">哪吒之魔童降世</span>&nbsp<span class="gold">8.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p579729551.webp" alt=""><br><span class="oneo">三傻大闹宝莱坞</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529206747.webp" alt=""><br><span class="oneo">西虹市首富</span>&nbsp<span class="gold">6.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p501177648.webp" alt=""><br><span class="oneo">怦然心动</span>&nbsp<span class="gold">9.1</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1512562287.webp" alt=""><br><span class="oneo">让子弹飞</span>&nbsp<span class="gold">8.9</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m5553">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2187837276.webp" alt=""><br><span class="oneo">是,大臣&nbsp第二季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837418.webp" alt=""><br><span class="oneo">是,大臣&nbsp第三季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2247237724.webp" alt=""><br><span class="oneo">猫和老鼠</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2579918159.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2492804476.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837239.webp" alt=""><br><span class="oneo">是,大臣&nbsp第一季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2381935440.webp" alt=""><br><span class="oneo">排球少年&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2187836471.webp" alt=""><br><span class="oneo">是,首相&nbso第一季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2187836590.webp" alt=""><br><span class="oneo">是,首相&nbso第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2410512421.webp" alt=""><br><span class="oneo">地球脉动</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837848.webp" alt=""><br><span class="oneo">艺术创想</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2544388666.webp" alt=""><br><span class="oneo">蓝色星球2</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2548872045.webp" alt=""><br><span class="oneo">张国荣热.情唱会</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2662590335.webp" alt=""><br><span class="oneo">探险活宝&nbsp第九季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2626101541.webp" alt=""><br><span class="oneo">布鲁伊&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m5554">
+        <div class="one">
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2824692330.webp" alt=""><br><span class="oneo">惹不起的千岁大人</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2868230853.webp" alt=""><br><span class="oneo">昆仑劫之鲛人泪</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2868235906.webp" alt=""><br><span class="oneo">枪手男友请束手就擒</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867910003.webp" alt=""><br><span class="oneo">飞吧,冰上之光</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2867706736.webp" alt=""><br><span class="oneo">大话西游:缘起</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2868171924.webp" alt=""><br><span class="oneo">78初恋</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867198912.webp" alt=""><br><span class="oneo">不会恋爱的我们</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2857102529.webp" alt=""><br><span class="oneo">奇侠义士</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2868242102.webp" alt=""><br><span class="oneo">我最亲爱的柳予安</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867352191.webp" alt=""><br><span class="oneo">2围马</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867314781.webp" alt=""><br><span class="oneo">猪猪侠之恐龙日记&nbsp第五季</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2868236224.webp" alt=""><br><span class="oneo">山东味道</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867881028.webp" alt=""><br><span class="oneo">盛装</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867819493.webp" alt=""><br><span class="oneo">假日暖洋洋2</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867447042.webp" alt=""><br><span class="oneo">外星人事件II</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m6661">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2681329386.webp" alt=""><br><span class="oneo">长津湖</span>&nbsp<span class="gold">7.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2681336608.webp" alt=""><br><span class="oneo">兰心大剧院</span>&nbsp<span class="gold">7.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2677934359.webp" alt=""><br><span class="oneo">鱿鱼游戏</span>&nbsp<span class="gold">7.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2673420377.webp" alt=""><br><span class="oneo">盛夏未来</span>&nbsp<span class="gold">7.1</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2695961421.webp" alt=""><br><span class="oneo">摩加迪沙</span>&nbsp<span class="gold">8.1</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2675827902.webp" alt=""><br><span class="oneo">脱口秀大会&nbsp第四季</span>&nbsp<span class="gold">7.6</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2687443734.webp" alt=""><br><span class="oneo">沙丘</span>&nbsp<span class="gold">7.7</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2677520025.webp" alt=""><br><span class="oneo">失控玩家</span>&nbsp<span class="gold">7.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2676295767.webp" alt=""><br><span class="oneo">俗女养成记2</span>&nbsp<span class="gold">9.3</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2675934255.webp" alt=""><br><span class="oneo">海岸村恰恰恰</span>&nbsp<span class="gold">8.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2673412189.webp" alt=""><br><span class="oneo">怒火.重案</span>&nbsp<span class="gold">7.2</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m6662">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2561305376.webp" alt=""><br><span class="oneo">我不是药神</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt=""><br><span class="oneo">肖申克的救赎</span>&nbsp<span class="gold">9.7</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2614500706.webp" alt=""><br><span class="oneo">寻梦环游记</span>&nbsp<span class="gold">9.1</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2545472803.webp" alt=""><br><span class="oneo">流浪地球</span>&nbsp<span class="gold">7.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.webp" alt=""><br><span class="oneo">千与千寻</span>&nbsp<span class="gold">9.4</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.webp" alt=""><br><span class="oneo">泰坦尼克号</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.webp" alt=""><br><span class="oneo">阿甘正传</span>&nbsp<span class="gold">9.5</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2616355133.webp" alt=""><br><span class="oneo">盗梦空间</span>&nbsp<span class="gold">9.4</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""><br><span class="oneo">疯狂动物城</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2561716440.webp" alt=""><br><span class="oneo">霸王别姬</span>&nbsp<span class="gold">9.6</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2401676338.webp" alt=""><br><span class="oneo">摔跤吧!爸爸</span>&nbsp<span class="gold">9.0</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.webp" alt=""><br><span class="oneo">哪吒之魔童降世</span>&nbsp<span class="gold">8.4</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p579729551.webp" alt=""><br><span class="oneo">三傻大闹宝莱坞</span>&nbsp<span class="gold">9.2</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529206747.webp" alt=""><br><span class="oneo">西虹市首富</span>&nbsp<span class="gold">6.6</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p501177648.webp" alt=""><br><span class="oneo">怦然心动</span>&nbsp<span class="gold">9.1</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m6663">
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2187837276.webp" alt=""><br><span class="oneo">是,大臣&nbsp第二季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837418.webp" alt=""><br><span class="oneo">是,大臣&nbsp第三季</span>&nbsp<span class="gold">9.9</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2247237724.webp" alt=""><br><span class="oneo">猫和老鼠</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2200410776.webp" alt=""><br><span class="oneo">老友记&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2551395076.webp" alt=""><br><span class="oneo">我们的星球</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2607457336.webp" alt=""><br><span class="oneo">老友记&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2579918159.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第二季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2330977709.webp" alt=""><br><span class="oneo">老友记&nbsp第五季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187822907.webp" alt=""><br><span class="oneo">老友记&nbsp第十季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2228920659.webp" alt=""><br><span class="oneo">老友记&nbsp第六季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2607463440.webp" alt=""><br><span class="oneo">老友记&nbsp第七季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2492804476.webp" alt=""><br><span class="oneo">瑞克和莫蒂&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2187837239.webp" alt=""><br><span class="oneo">是,大臣&nbsp第一季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2381935440.webp" alt=""><br><span class="oneo">排球少年&nbsp第三季</span>&nbsp<span class="gold">9.8</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2187836471.webp" alt=""><br><span class="oneo">是,首相&nbso第一季</span>&nbsp<span class="gold">9.8</span></a>
+        </div>
+    </div>
+    <div class="m11" id="m6664">
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867299847.webp" alt=""><br><span class="oneo">十年一品温如言</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2868059268.webp" alt=""><br><span class="oneo">一年,一夜</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867881232.webp" alt=""><br><span class="oneo">不要忘记我爱你</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2707594457.webp" alt=""><br><span class="oneo">陪你一起好好吃饭</span></a>
+            <a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2824692330.webp" alt=""><br><span class="oneo">惹不起的千岁大人</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2702404261.webp" alt=""><br><span class="oneo">金鱼妻</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2861039283.webp" alt=""><br><span class="oneo">三个冬天</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2868242393.webp" alt=""><br><span class="oneo">天王助理</span></a>
+            <a href=""><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2856637465.webp" alt=""><br><span class="oneo">像这样的夏天</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867418919.webp" alt=""><br><span class="oneo">花之战</span></a>
+        </div>
+        <div class="one">
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2867467489.webp" alt=""><br><span class="oneo">动荡</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2844247258.webp" alt=""><br><span class="oneo">婚情咨文&nbsp第二季</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867979973.webp" alt=""><br><span class="oneo">农家女婿和千金媳妇</span></a>
+            <a href=""><img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2646695102.webp" alt=""><br><span class="oneo">恐怖美国&nbsp第二章</span></a>
+            <a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2646418759.webp" alt=""><br><span class="oneo">疯狂爱情家</span></a>
+        </div>
+    </div>
+    <div class="empty4"></div>
+    <a class="gengduo">加载更多</a>
+    <div class="shaixuan"><a  id="xu1">1</a>--<a  id="xu2">2</a>--<a  id="xu3">3</a>--<a  id="xu4">4</a>--<a  id="xu5">5</a>--<a  id="xu6">6</a>--<a  id="xu7">7</a>--<a  id="xu8">8</a>--<a id="xu9">9</a>--<a id="xu10">10</a></div>
+    </div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <div class="rightbox">
+       <div class="huida">
+           <div class="erweima"><a href=""><img src="https://img3.doubanio.com/f/movie/a02f6ed325fc52e220f299d51e730c422e2bcd16/pics/movie/douban_app_ad/qrcode.png" alt=""></a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+           <div class="lvzi">
+               <div class="guanwang"><a href=""><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F30%2F75%2F5b80ce04ab382_610.jpg&refer=http%3A%2F%2Fpic.51yuansu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647397905&t=2d2512f15c4f5d715c58b6ce5ec534b3" alt=""></a></div>
+               &nbsp&nbsp&nbsp&nbsp<div class="zi"><span class="da">豆瓣</span><br><span class="xiao">你的口味我知道</span></div>
+           </div>
+       </div>
+    </div>
+    </div>
+</body>
+<script>
+    var m1=document.getElementById("m1");
+    var m2=document.getElementById("m2");
+    var m3=document.getElementById("m3");
+    var m4=document.getElementById("m4");
+    var m5=document.getElementById("m5");
+    var m6=document.getElementById("m6");
+    var m7=document.getElementById("m7");
+    var m111=document.getElementById("m111");
+    var m222=document.getElementById("m222");
+    var m333=document.getElementById("m333");
+    var m444=document.getElementById("m444");
+    var m5551=document.getElementById("m5551");
+    var m5552=document.getElementById("m5552");
+    var m5553=document.getElementById("m5553");
+    var m5554=document.getElementById("m5554");
+    var m6661=document.getElementById("m6661");
+    var m6662=document.getElementById("m6662");
+    var m6663=document.getElementById("m6663");
+    var m6664=document.getElementById("m6664");
+    m1.onclick=function(){
+        m1.style['border']=" 0.5px solid rgb(47, 115, 216)";
+        m1.style.color="rgb(47, 115, 216)";
+        m2.style['border']="none";
+        m2.style.color="gray";
+        m3.style['border']="none";
+        m3.style.color="gray";
+        m4.style['border']="none";
+        m4.style.color="gray";
+        m5.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    if(m6661.style.color=="rgb(47, 115, 216)"){
+        m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6661.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m6661.style.position="relative";
+    }else{
+        m111.style.display="block";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m111.style.position="relative";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+    m5551.style.display="block";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5551.style.position="relative";
+          }
+    }  
+    m6.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    if(m5551.style.color=="rgb(47, 115, 216)"){
+        m5551.style.display="block";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5551.style.position="relative";
+    }else{
+        m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+        m111.style.display="block";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m111.style.position="relative";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m6661.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6661.style.position="relative";
+          }
+    }  
+    m111.style.display="block";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m111.style.position="relative";
+        }
+    m2.onclick=function(){
+        m2.style['border']=" 0.5px solid rgb(47, 115, 216)";
+        m2.style.color="rgb(47, 115, 216)";
+        m1.style['border']="none";
+        m1.style.color="gray";
+        m3.style['border']="none";
+        m3.style.color="gray";
+        m4.style['border']="none";
+        m4.style.color="gray";
+        m5.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m5551.style.display="none";
+              m5553.style.display="none";
+    m5552.style.display="none";
+    m5554.style.display="none";
+    if(m6662.style.color=="rgb(47, 115, 216)"){
+        m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6662.style.display="block";
+    m6661.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m6662.style.position="relative";
+    }else{
+        m222.style.display="block";
+    m111.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m222.style.position="relative";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m5552.style.display="block";
+    m5554.style.display="none";
+    m5553.style.display="none";
+    m5551.style.display="none";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5552.style.position="relative";
+          }
+    }  
+    m6.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    if(m5552.style.color=="rgb(47, 115, 216)"){
+        m5552.style.display="block";
+    m5551.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5552.style.position="relative";
+    }else{
+        m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+        m222.style.display="block";
+    m111.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m222.style.position="relative";
+          }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m6662.style.display="block";
+    m6661.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6662.style.position="relative";
+          }
+    }  
+    m222.style.display="block";
+    m111.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m222.style.position="relative";
+    }
+    m3.onclick=function(){
+        m3.style['border']=" 0.5px solid rgb(47, 115, 216)";
+        m3.style.color="rgb(47, 115, 216)";
+        m1.style['border']="none";
+        m1.style.color="gray";
+        m2.style['border']="none";
+        m2.style.color="gray";
+        m4.style['border']="none";
+        m4.style.color="gray";
+        m5.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m5551.style.display="none";
+              m5553.style.display="none";
+    m5552.style.display="none";
+    m5554.style.display="none";
+    if(m6663.style.color=="rgb(47, 115, 216)"){
+        m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6663.style.display="block";
+    m6662.style.display="none";
+    m6661.style.display="none";
+    m6664.style.display="none";
+    m6663.style.position="relative";
+    }else{
+        m333.style.display="block";
+    m111.style.display="none";
+    m222.style.display="none";
+    m444.style.display="none";
+    m333.style.position="relative";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m5553.style.display="block";
+    m5554.style.display="none";
+    m5552.style.display="none";
+    m5551.style.display="none";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5553.style.position="relative";
+          }
+    }  
+    m6.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    if(m5553.style.color=="rgb(47, 115, 216)"){
+        m5553.style.display="block";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5553.style.position="relative";
+    }else{
+        m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+        m333.style.display="block";
+    m111.style.display="none";
+    m222.style.display="none";
+    m444.style.display="none";
+    m333.style.position="relative";
+          }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m6663.style.display="block";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6664.style.display="none";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6663.style.position="relative";
+          }
+    }  
+    m333.style.display="block";
+    m111.style.display="none";
+    m222.style.display="none";
+    m444.style.display="none";
+    m333.style.position="relative";
+    }
+    m4.onclick=function(){
+        m4.style['border']=" 0.5px solid rgb(47, 115, 216)";
+        m4.style.color="rgb(47, 115, 216)";
+        m3.style['border']="none";
+        m3.style.color="gray";
+        m2.style['border']="none";
+        m2.style.color="gray";
+        m1.style['border']="none";
+        m1.style.color="gray";
+        m5.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m5551.style.display="none";
+              m5553.style.display="none";
+    m5552.style.display="none";
+    m5554.style.display="none";
+    if(m6664.style.color=="rgb(47, 115, 216)"){
+        m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6664.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6661.style.display="none";
+    m6664.style.position="relative";
+    }else{
+        m444.style.display="block";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.position="relative";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m5554.style.display="block";
+    m5553.style.display="none";
+    m5552.style.display="none";
+    m5551.style.display="none";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5554.style.position="relative";
+          }
+    }  
+    m6.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    if(m5554.style.color=="rgb(47, 115, 216)"){
+        m5554.style.display="block";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5554.style.position="relative";
+    }else{
+        m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+        m444.style.display="block";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.position="relative";
+          }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m6664.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6661.style.display="none";
+    m444.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m6661.style.position="relative";
+          }
+    }  
+    m444.style.display="block";
+    m111.style.display="none";
+    m333.style.display="none";
+    m222.style.display="none";
+    m444.style.position="relative";
+    }
+    m5.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    if(m6661.style.color=="rgb(47, 115, 216)"){
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6661.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m6661.style.position="relative";
+    }else{
+    m111.style.display="block";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m111.style.position="relative";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    }
+        }else{
+              this.style.color="rgb(47, 115, 216)";
+              m5551.style.display="block";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5551.style.position="relative";
+          }
+    }  
+    m6.onclick=function(){
+          if(this.style.color=="rgb(47, 115, 216)"){
+              this.style.color="gray";
+              m6661.style.display="none";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    if(m5551.style.color=="rgb(47, 115, 216)"){
+    m5551.style.display="block";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m5551.style.position="relative";
+    }else{
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="block";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m111.style.position="relative";
+    }
+          }else{
+              this.style.color="rgb(47, 115, 216)";
+              m6661.style.display="block";
+    m6662.style.display="none";
+    m6663.style.display="none";
+    m6664.style.display="none";
+    m5551.style.display="none";
+    m5552.style.display="none";
+    m5553.style.display="none";
+    m5554.style.display="none";
+    m111.style.display="none";
+    m222.style.display="none";
+    m333.style.display="none";
+    m444.style.display="none";
+    m6661.style.position="relative";
+          }
+    }
+    $(".shaixuan").hide();
+    $("#m7").mouseenter(function(){
+        m7.style.color="rgb(47, 115, 216)";
+        $(".shaixuan").show();
+    })
+    $(".shaixuan").mouseenter(function(){
+        m7.style.color="rgb(47, 115, 216)";
+        $(".shaixuan").show();
+    })
+    $("#m7").mouseleave(function(){
+        m7.style.color="gray";
+        $(".shaixuan").hide();
+    })
+    $(".shaixuan").mouseleave(function(){
+        m7.style.color="gray";
+        $(".shaixuan").hide();
+    })
+    var xu1=document.getElementById("xu1");
+    var xu2=document.getElementById("xu2");
+    var xu3=document.getElementById("xu3");
+    var xu4=document.getElementById("xu4");
+    var xu5=document.getElementById("xu5");
+    var xu6=document.getElementById("xu6");
+    var xu7=document.getElementById("xu7");
+    var xu8=document.getElementById("xu8");
+    var xu9=document.getElementById("xu9");
+    var xu10=document.getElementById("xu10");
+    xu1.onclick=function(){
+        xu1.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu2.onclick=function(){
+        xu2.style.color="gold";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu3.onclick=function(){
+        xu3.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu4.onclick=function(){
+        xu4.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu5.onclick=function(){
+        xu5.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu6.onclick=function(){
+        xu6.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu7.onclick=function(){
+        xu7.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu8.onclick=function(){
+        xu8.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu9.onclick=function(){
+        xu9.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+        xu10.style.color="rgb(47, 115, 216)";
+    }
+    xu10.onclick=function(){
+        xu10.style.color="gold";
+        xu2.style.color="rgb(47, 115, 216)";
+        xu3.style.color="rgb(47, 115, 216)";
+        xu4.style.color="rgb(47, 115, 216)";
+        xu5.style.color="rgb(47, 115, 216)";
+        xu6.style.color="rgb(47, 115, 216)";
+        xu7.style.color="rgb(47, 115, 216)";
+        xu8.style.color="rgb(47, 115, 216)";
+        xu9.style.color="rgb(47, 115, 216)";
+        xu1.style.color="rgb(47, 115, 216)";
+    }
+</script>
+</html>

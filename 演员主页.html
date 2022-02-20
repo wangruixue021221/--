@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杰拉德.不什</title>
+    <style>
+        *{
+         padding: 0;
+         margin: 0;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+     }
+     .black{
+         width: 100%;
+         height: 25px;
+         background-color: rgb(68, 68, 68);
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .one{
+         width: 600px;
+         height: 25px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .two{
+         width: 200px;
+         height: 25px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .black a{
+         display: block;
+         font-size: 13px;
+         color: rgb(187, 184, 184);
+         text-decoration: none;
+         position: relative;
+         top: 5px;
+     }
+     .black a:hover{
+         color: white;
+     }
+     .blue{
+         width: 100%;
+         height: 120px;
+         background-color: rgb(245, 246, 248);
+     }
+     .big{
+         width: 100%;
+         height: 80px;
+         display: flex;
+         justify-content: center;
+         flex-direction: row;
+         position: relative;
+         top: 20px;
+         left: -200px;
+     }
+     .big a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 30px;
+         font-weight: 35px;
+     }
+     .big input{
+        width: 500px;
+         height: 30px;
+         background-color: white;
+         font-size: 14px;
+         color: gray;
+         position: relative;
+         border: 0.5px solid rgb(196, 195, 195);
+         top: -5px
+     }
+     #btnnn{
+        width: 30px;
+         height: 30px;
+         background-image: url(img.jfif);
+         background-repeat: no-repeat;
+         background-size: 100% 30px;
+         position: relative;
+         border: 0.5px solid rgb(196, 195, 195);
+         top: 5px;
+     }
+     .small{
+         width: 700px;
+         height: 38px;
+         display: flex;
+         justify-content: space-around;
+         flex-direction: row;
+     }
+     .small a{
+         text-decoration: none;
+         font-size: 15px;
+         color: rgb(47, 115, 216);
+         position: relative;
+         height: 25px;
+         line-height: 25px;
+         top: 8px;
+         left: 65px;
+     }
+     .small a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+     .niandu{
+         z-index: 2;
+         width: 220px;
+         text-decoration: none;
+         display: block;
+         height: 100px;
+         background-image: url(img2.jfif);
+         background-repeat: no-repeat;
+         background-size: 100% 100px;
+         position: relative;
+         left: 800px;
+         top: -110px;
+     }
+     .bigbox{
+        width: 100%;
+        z-index: 2;
+        position: relative;
+        top: -70px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+     }
+     .leftbox{
+        width: 750px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+     }
+     .rightbox{
+         width: 250px;
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: column;
+     }
+     .empty{
+         height: 20px;
+     }
+     .empty2{
+         height: 40px;
+     }
+     .zhaopian{
+        height: 170px;
+        display: flex;
+        justify-content:flex-start;
+        flex-direction: row;
+     }
+     .zhao{
+        width: 140px;
+        height: 170px;
+     }
+     .zhao img{
+         width: 140px;
+         height: 170px;
+     }
+     .wenzi{
+         height: 170px;
+         font-size: 15px;
+         color: black;
+     }
+     .wenzi span{
+         font-size: 15px;
+         color: gray;
+     }
+     .wenzi a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 15px;
+     }
+     .wenzi a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+     .fenxiang{
+         height: 30px;
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: row;
+         border-bottom: 0.5px dotted rgb(192, 188, 188);
+     }
+     .shoucang{
+         width: 40px;
+         height: 25px;
+         border: 0.5px solid orange;
+         background-color: rgb(214, 194, 158);
+         color: black;
+         line-height: 25px;
+         text-align: center;
+         font-size: 14px;
+         cursor: pointer;
+     }
+     .fenxiangdao{
+         height: 25px;
+         line-height: 25px;
+         color: rgb(47, 115, 216);
+         font-size: 14px;
+     }
+     .fenxiangdao select{
+         width: 10px;
+         height: 10px;
+         position: relative;
+         top: 4px;
+         background-color: gray;
+         color: gray;
+     }
+     .jian{
+         color: black;
+         font-size: 15px;
+         height: 30px;
+     }
+     .yingrentupian{
+         height: 30px;
+         color: black;
+         font-size: 15px;
+     }
+     .yingrentupian a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 14px;
+     }
+     .yingrentupian a:hover{
+         color: white;
+         background-color: rgb(47, 115, 216);
+     }
+     .pian{
+         width: 120px;
+         height: 120px;
+     }
+     .pian img{
+         width: 120px;
+         height: 120px;
+     }
+     .fenkai{
+         height: 40px;
+         display: flex;
+         width: 220px;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .kai{
+         height: 40px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .fenkai div{
+        font-size: 18px;
+        color: rgb(158, 157, 157);
+     }
+     .dianying{
+         height: 180px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .dian{
+         width: 130px;
+         height: 180px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+     }
+     .ying{
+         width: 130px;
+         height: 150px;
+     }
+     .ying a{
+         text-decoration: none;
+     }
+     .ying a img{
+         width: 130px;
+         height: 150px;
+     }
+     .zi{
+         width: 130px;
+         height: 30px;
+         text-align: center;
+         font-size: 12px;
+         color: gold;
+     }
+     .zi a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 14px;
+         width: 130px;
+         text-align: center;
+     }
+     .zi a:hover{
+         color: white;
+         background-color: rgb(47, 115, 216);
+     }
+     .zi span{
+         font-size: 13px;
+         color: gray;
+     }
+     .hezuo{
+         height: 180px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .he{
+         width: 120px;
+         height: 180px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+     }
+     .ren{
+         width: 120px;
+         height: 140px;
+     }
+     .ren a{
+         text-decoration: none;
+     }
+     .ren a img{
+         width: 120px;
+         height: 140px;
+     }
+     .zi1{
+         width: 120px;
+         text-align: center;
+         font-size: 14px;
+         color: black;
+     }
+     .zi1 a{
+         text-decoration: none;
+         font-size: 14px;
+         color: rgb(47, 115, 216);
+     }
+     .zi1 a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+     .yingmi{
+         height: 30px;
+         color: black;
+         font-size: 15px;
+     }
+     .yingmi a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 14px;
+     }
+     .yingmi a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+     .empty5{
+         height: 20px;
+     }
+     .empty6{
+         height: 40px;
+     }
+     .renshu{
+         height: 80px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: row;
+     }
+     .shu{
+         width: 60px;
+         height: 80px;
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column;
+     }
+     .renlian{
+         width: 60px;
+         height: 55px;
+     }
+     .zi2{
+         width: 60px;
+         height: 25px;
+         text-align: center;
+     }
+     .zi2 a{
+         text-decoration: none;
+         color: rgb(47, 115, 216);
+         font-size: 13px;
+         text-align: center;
+     }
+     .zi2 a:hover{
+         background-color: rgb(47, 115, 216);
+         color: white;
+     }
+    </style>
+</head>
+<body>
+    <div class="black">
+        <div class="one">
+            <a href="豆瓣.html">豆瓣</a><a href="">读书</a><a href="">电影</a><a href="">音乐</a><a href="">同城</a><a href="">小组</a><a href="">阅读</a><a href="">FM</a><a href="">时间</a><a href="">豆品</a>
+        </div>
+        <div class="two">
+            <a href="">下载豆瓣客户端</a><a href="登录注册.html" target="_blank">登录/注册</a>
+        </div>
+    </div>
+    <div class="blue">
+        <div class="big">
+            <div><a href="豆瓣.html">豆瓣电影</a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <div class="container">
+                <div class="bgDiv">
+                <input type="text" name="搜索" id="sousuo" placeholder="搜索电影,电视剧,综艺,影人"><input type="button" class="searchButton" id="btnnn">
+                <div class="suggest">
+             <ul id="search-result">
+             </ul>
+                </div> 
+                </div>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="small">
+            <a href="">影讯&购票</a><a href="">选电影</a><a href="">电视剧</a><a href="">排行榜</a><a href="分类选电影.html">分类</a><a href="">影评</a><a href="">2021年度榜单</a><a href="">2021书影音报告</a>
+        </div>
+    </div>
+    <a class="niandu" href=""></a>
+    <div class="bigbox">
+        <div class="leftbox">
+   <h1>杰拉德·不什&nbsp&nbsp&nbspJared&nbsp&nbspBush</h1>
+   <div class="empty"></div>
+   <div class="zhaopian">
+       <div class="zhao"><img src="https://img9.doubanio.com/view/celebrity/raw/public/p1456810614.66.jpg" alt=""></div>&nbsp&nbsp&nbsp&nbsp&nbsp
+       <div class="wenzi">
+        <span>
+        性别:
+        </span>男<br>
+        <span> 出生地: </span>美国<br>
+        <span> 职业: </span>编剧 / 导演 / 配音<br>
+        <span> imdb编号: <a href="">nm1158544</a></span>
+    </div>
+   </div>
+   <div class="empty"></div>
+   <div class="fenxiang">
+       <div class="shoucang">收藏</div>&nbsp&nbsp&nbsp&nbsp
+       <div class="fenxiangdao">分享到<select><option value=""></option>
+       <option value=""></option>
+       <option value=""></option></select></div>
+   </div>
+   <div class="empty"></div>
+   <div class="jian">影人简介· · · · · · </div>
+   <div class="empty2"></div>
+   <div class="yingrentupian">影人图片· · · · · · (<a href="">全部一张</a>.<a href="">上传照片</a>)</div>
+   <div class="empty"></div>
+   <div class="pian"><img src="https://img2.doubanio.com/view/photo/sqxs/public/p2500889932.webp" alt=""></div>
+   <div class="empty"></div>
+   <div class="yingrentupian">获奖情况......(<a href="">全部</a>)</div>
+   <div class="empty"></div>
+   <div class="yingrentupian">2022年&nbsp&nbsp<a href="">第94届奥斯卡金像奖</a>&nbsp&nbsp最佳动画长片(提名)&nbsp&nbsp<a href="魔法满屋.html">魔法满屋</a></div>
+   <div class="yingrentupian">2017年&nbsp&nbsp<a href="">第44届动画安妮奖</a>&nbsp&nbsp最佳导演&nbsp&nbsp<a href="">疯狂动物城</a></div>
+   <div class="yingrentupian">2017年&nbsp&nbsp<a href="">第44届动画安妮奖</a>&nbsp&nbsp最佳编剧&nbsp&nbsp<a href="">疯狂动物城</a></div>
+   <div class="empty"></div>
+   <div class="yingrentupian">最近的5部作品(已上映)  · · · · · ·  ( <a href="">全部</a> )</div>
+   <div class="empty"></div>
+   <div class="kai">
+   <div class="fenkai">
+       <div>2021</div>
+       <div>2016</div>
+   </div>
+   <div class="fenkai">
+       <div>2015</div>
+       <div>2003</div>
+   </div>
+   </div>
+   <div class="empty"></div>
+<div class="dianying">
+    <div class="dian">
+        <div class="ying"><a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614500649.webp" alt=""></a></div>
+        <div class="zi"><a href="">疯狂动物城</a>&nbsp9.2<br><span>2016</span></div>
+    </div>
+    <div class="dian">
+        <div class="ying"><a href=""><img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2397960879.webp" alt=""></a></div>
+        <div class="zi"><a href="">魔法满屋</a>&nbsp7.5<br><span>2016</span></div>
+    </div>
+    <div class="dian">
+        <div class="ying"><a href="魔法满屋.html"><img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2807936075.webp" alt=""></a></div>
+        <div class="zi"><a href="">魔法满屋</a>&nbsp6.5<br><span>2021</span></div>
+    </div>
+    <div class="dian">
+        <div class="ying"><a href=""><img src="https://img3.doubanio.com/f/movie/30c6263b6db26d055cbbe73fe653e29014142ea3/pics/movie/movie_default_large.png" alt=""></a></div>
+        <div class="zi"><a href="">Totally&nbspOutrage...</a><br><span>2003</span></div>
+    </div>
+    <div class="dian">
+        <div class="ying"><a href=""><img src="https://img3.doubanio.com/f/movie/30c6263b6db26d055cbbe73fe653e29014142ea3/pics/movie/movie_default_large.png" alt=""></a></div>
+        <div class="zi"><a href="">Baby&nbspBob</a><br><span>2002</span></div>
+    </div>
+</div>
+<div class="empty"></div>
+<div class="yingrentupian">合作2次以上的影人  · · · · · ·  ( <a href="">全部</a> )</div>
+<div class="empty"></div>
+<div class="hezuo">
+    <div class="he">
+     <div class="ren"><a href=""><img src="https://img1.doubanio.com/view/celebrity/raw/public/p34687.jpg" alt=""></a></div>
+     <div class="zi1"><a href="">艾伦.图代克</a>&nbsp合作作品(<a href="" id="lan">3</a>)</div>
+    </div>
+    <div class="he">
+        <div class="ren"><a href=""><img src="https://img9.doubanio.com/view/celebrity/raw/public/p1457505519.94.jpg" alt=""></a></div>
+        <div class="zi1"><a href="">拜伦·霍华德</a>&nbsp合作作品(<a href="" id="lan">3</a>)</div>
+    </div>
+    <div class="he">
+        <div class="ren"><a href=""><img src="https://img1.doubanio.com/view/celebrity/raw/public/p1457505501.8.jpg" alt=""></a></div>
+        <div class="zi1"><a href="">瑞奇·摩尔</a>&nbsp合作作品(<a href="" id="lan">2</a>)</div>
+    </div>
+    <div class="he">
+        <div class="ren"><a href=""><img src="https://img2.doubanio.com/view/celebrity/raw/public/p18772.jpg" alt=""></a></div>
+        <div class="zi1"><a href="">杰森·贝特曼</a>&nbsp合作作品(<a href="" id="lan">2</a>)</div>
+    </div>
+    <div class="he">
+        <div class="ren"><a href=""><img src="https://img2.doubanio.com/view/celebrity/raw/public/p9652.jpg" alt=""></a></div>
+        <div class="zi1"><a href="">金妮弗·古德温</a>&nbsp合作作品(<a href="" id="lan">2</a>)</div>
+    </div>
+    <div class="he">
+        <div class="ren"><a href=""><img src="https://img9.doubanio.com/view/celebrity/raw/public/p1479541268.64.jpg" alt=""></a></div>
+        <div class="zi1"><a href="">乔西·特立尼达</a>&nbsp合作作品(<a href="" id="lan">2</a>)</div>
+    </div>
+</div>
+   </div>&nbsp&nbsp&nbsp&nbsp
+   <div class="rightbox">
+       <div class="yingmi">杰拉德·不什的影迷(48)  · · · · · ·  ( <a href="">全部</a> )</div>
+       <div class="empty5"></div>
+       <div class="renshu">
+          <div class="shu">
+              <div class="renlian"><img src="https://img2.doubanio.com/icon/u1433679-1.jpg" alt=""></div>
+              <div class="zi2"><a href="">潜行</a></div>
+          </div>
+          <div class="shu">
+            <div class="renlian"><img src="https://img2.doubanio.com/icon/u188059458-2.jpg" alt=""></div>
+            <div class="zi2"><a href="">雲汐</a></div>
+          </div>
+          <div class="shu">
+            <div class="renlian"><img src="https://img2.doubanio.com/icon/u184429810-1.jpg" alt=""></div>
+            <div class="zi2"><a href="">楉雪</a></div>
+          </div>
+          <div class="shu">
+            <div class="renlian"><img src="https://img2.doubanio.com/icon/u167294376-1.jpg" alt=""></div>
+            <div class="zi2"><a href="">sophiaalfira</a></div>
+          </div>
+       </div>
+       <div class="empty6"></div>
+       <div class="renshu">
+        <div class="shu">
+            <div class="renlian"><img src="https://img9.doubanio.com/icon/u158278476-5.jpg" alt=""></div>
+            <div class="zi2"><a href="">独依</a></div>
+        </div>
+        <div class="shu">
+          <div class="renlian"><img src="https://img9.doubanio.com/icon/u2223537-85.jpg" alt=""></div>
+          <div class="zi2"><a href="">?</a></div>
+        </div>
+        <div class="shu">
+          <div class="renlian"><img src="https://img2.doubanio.com/icon/u178511485-3.jpg" alt=""></div>
+          <div class="zi2"><a href="">阿宇</a></div>
+        </div>
+        <div class="shu">
+          <div class="renlian"><img src="https://img1.doubanio.com/icon/user_normal.jpg" alt=""></div>
+          <div class="zi2"><a href="">豆友84296665</a></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</body>
+</html>
