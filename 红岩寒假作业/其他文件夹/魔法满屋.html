@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>魔法满屋</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .black {
+            width: 100%;
+            height: 25px;
+            background-color: rgb(68, 68, 68);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .one1 {
+            width: 600px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .two1 {
+            width: 200px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .black a {
+            display: block;
+            font-size: 13px;
+            color: rgb(187, 184, 184);
+            text-decoration: none;
+            position: relative;
+            top: 5px;
+        }
+
+        .black a:hover {
+            color: white;
+        }
+
+        .blue {
+            width: 100%;
+            height: 120px;
+            background-color: rgb(245, 246, 248);
+        }
+
+        .big {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            position: relative;
+            top: 20px;
+            left: -200px;
+        }
+
+        .big a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 30px;
+            font-weight: 35px;
+        }
+
+        #sousuo {
+            width: 500px;
+            height: 30px;
+            background-color: white;
+            font-size: 14px;
+            color: gray;
+            position: relative;
+            border: 0.5px solid rgb(196, 195, 195);
+            top: -5px;
+        }
+
+        #btnnn {
+            width: 30px;
+            height: 30px;
+            background-image: url(img.jfif);
+            background-repeat: no-repeat;
+            background-size: 100% 30px;
+            position: relative;
+            border: 0.5px solid rgb(196, 195, 195);
+            top: 5px;
+        }
+
+        .small {
+            width: 700px;
+            height: 38px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .small a {
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(47, 115, 216);
+            position: relative;
+            height: 25px;
+            line-height: 25px;
+            top: 8px;
+            left: 65px;
+        }
+
+        .small a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .niandu {
+            z-index: 2;
+            width: 220px;
+            text-decoration: none;
+            display: block;
+            height: 100px;
+            background-image: url(img2.jfif);
+            background-repeat: no-repeat;
+            background-size: 100% 100px;
+            position: relative;
+            left: 800px;
+            top: -110px;
+        }
+
+        .bigbox {
+            width: 100%;
+            position: relative;
+            top: -60px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .leftbox {
+            width: 700px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .rightbox {
+            width: 350px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .one {
+            color: black;
+        }
+
+        .two {
+            color: gray;
+            font-size: 30px;
+            display: inline-block;
+        }
+
+        .empty {
+            height: 20px;
+        }
+
+        .jianjie {
+            width: 700px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .chang {
+            width: 500px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            border-right: 0.4px solid rgb(206, 203, 203);
+        }
+
+        .image {
+            width: 120px;
+            height: 150px;
+        }
+
+        .image a {
+            text-decoration: none;
+        }
+
+        #miaoshu {
+            text-decoration: none;
+            font-size: 13px;
+            width: 120px;
+            height: 20px;
+            color: gray;
+            line-height: 20px;
+            text-align: center;
+            position: relative;
+            left: 15px;
+        }
+
+        #miaoshu:hover {
+            background-color: rgb(114, 88, 2);
+            border: 0.3px solid red;
+            color: white;
+        }
+
+        .image a img {
+            width: 120px;
+            height: 150px;
+        }
+
+        .yingren {
+            color: gray;
+            font-size: 14px;
+        }
+
+        .yingren a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .yingren a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .yingren span {
+            font-size: 14px;
+            color: black;
+        }
+
+        .duan {
+            width: 150px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .pingfen {
+            color: gray;
+            font-size: 13px;
+        }
+
+        .fenshu {
+            width: 150px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        .fen {
+            color: black;
+            font-size: 18px;
+        }
+
+        .xingxing {
+            font-size: 15px;
+            color: gold;
+        }
+
+        .xingxing a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 13px;
+        }
+
+        .xingxing a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .wuxing {
+            width: 150px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            height: 100px;
+            border-bottom: 0.5px solid rgb(197, 195, 195);
+        }
+
+        .ha div {
+            color: gray;
+            font-size: 13px;
+        }
+
+        .chang1 {
+            width: 3px;
+            height: 12px;
+            background-color: gold;
+        }
+
+        .chang2 {
+            width: 16px;
+            height: 12px;
+            background-color: gold;
+        }
+
+        .chang3 {
+            width: 50px;
+            height: 12px;
+            background-color: gold;
+        }
+
+        .chang4 {
+            width: 25px;
+            height: 12px;
+            background-color: gold;
+        }
+
+        .chang5 {
+            width: 8px;
+            height: 12px;
+
+            background-color: gold;
+        }
+
+        .haoyu {
+            width: 150px;
+            color: gray;
+            font-size: 15px;
+        }
+
+        .haoyu a {
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(47, 115, 216);
+        }
+
+        .haoyu a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .w {
+            height: 3px;
+        }
+
+        .empty1 {
+            height: 30px;
+        }
+
+        .kan {
+            height: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        .xiangkan {
+            width: 40px;
+            height: 25px;
+            border: 0.2px solid orange;
+            background-color: rgb(231, 195, 128);
+            line-height: 25px;
+            text-align: center;
+            color: black;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+
+        .pingjia {
+            color: black;
+            font-size: 15px;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .yingping {
+            height: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .xie {
+            height: 25px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        .xieyingping img {
+            width: 10px;
+            height: 10px;
+        }
+
+        .xieyingping a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .xieyingping a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        #fen {
+            width: 15px;
+            height: 15px;
+            position: relative;
+            top: 2px;
+            color: gray;
+        }
+
+        .tuijian {
+            width: 35px;
+            height: 20px;
+            border: 0.2px solid rgb(84, 175, 84);
+            background-color: rgb(138, 190, 138);
+            color: green;
+            font-size: 13px;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .tuijian a {
+            text-decoration: none;
+        }
+
+        .green {
+            height: 25px;
+            color: green;
+            font-size: 18px;
+        }
+
+        .green span {
+            font-size: 18px;
+            color: gray;
+        }
+
+        .green span a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+        }
+
+        .green span a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .juqing {
+            font-size: 13px;
+            color: black;
+        }
+
+        .empty2 {
+            height: 10px;
+        }
+
+        .yanzhiyuan {
+            height: 180px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .pai {
+            width: 110px;
+            height: 150px;
+            text-align: center;
+        }
+
+        .pai a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .pai span {
+            color: gray;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .pai a img {
+            width: 110px;
+            height: 150px;
+        }
+
+        .pai a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty6 {
+            height: 60px;
+        }
+
+        .yugao {
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .vedio {
+            width: 190px;
+            height: 120px;
+        }
+
+
+        .vedio #yugaoba {
+            text-decoration: none;
+            display: block;
+            width: 190px;
+            height: 120px;
+        }
+
+        #yugaoba div {
+            width: 190px;
+            height: 120px;
+            background-image: url(img.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .tu {
+            width: 110px;
+            height: 120px;
+        }
+
+        .tu img {
+            width: 110px;
+            height: 120px;
+        }
+
+
+        .huojiang {
+            color: black;
+            font-size: 13px;
+        }
+
+        .huojiang a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 13px;
+        }
+
+        .huojiang a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .xihuan {
+            height: 170px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .lie {
+            width: 120px;
+            height: 170px;
+            text-align: center;
+        }
+
+        .lie a {
+            text-decoration: none;
+            font-size: 14px;
+            color: rgb(47, 115, 216);
+        }
+
+        .lie a img {
+            width: 120px;
+            height: 150px;
+        }
+
+        .lie a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .remen {
+            font-size: 14px;
+            color: black;
+            height: 30px;
+            border-bottom: 0.5px solid rgb(228, 224, 224);
+        }
+
+        .remen a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .remen a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .green1 {
+            height: 30px;
+            color: green;
+            font-size: 18px;
+            border-bottom: 0.4px solid rgb(207, 206, 206);
+        }
+
+        .green2 {
+            color: green;
+            font-size: 18px;
+        }
+
+        .green1 span a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+        }
+
+        .green1 span {
+            font-size: 15px;
+            color: gray;
+        }
+
+        .green span a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .a {
+            height: 25px;
+            border-bottom: 0.4px solid rgb(207, 206, 206);
+            color: gray;
+            line-height: 25px;
+            font-size: 14px;
+        }
+
+        .a a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .a a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty10 {
+            height: 40px;
+        }
+
+        .empty11 {
+            height: 10px;
+        }
+
+        .liang {
+            height: 70px;
+            border-bottom: 0.4px solid rgb(207, 206, 206);
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        .touxiang {
+            width: 60px;
+            height: 60px;
+        }
+
+        .touxiang a {
+            text-decoration: none;
+        }
+
+        .touxiang a img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .shijian a {
+            font-size: 14px;
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+        }
+
+        .shijian {
+            font-size: 14px;
+            color: black;
+        }
+
+        .shijian a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .kanguo1 {
+            font-size: 14px;
+            color: black;
+        }
+
+        .kanguo1 a {
+            font-size: 14px;
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+        }
+
+        .kanguo1 a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        input {
+            font-size: 14px;
+            line-height: 24px;
+            color: #333;
+            font-family: Microsoft yahei, Song, Arial, Helvetica, Tahoma, Geneva;
+        }
+
+        .three {
+            height: 20px;
+            width: 700px;
+            line-height: 20px;
+            font-size: 16px;
+            color: white;
+            background: green;
+        }
+
+        #content #post,
+        #comment p {
+            zoom: 1;
+        }
+
+        #content #post:after,
+        #comment p:after {
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+            content: '.';
+        }
+
+        .transition {
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+        }
+
+        #content {
+            width: 700px;
+            overflow: hidden;
+        }
+
+
+        #content #post {
+            border-bottom: 1px #d4d4d4 dashed;
+            height: 150px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px
+        }
+
+        #content #post textarea {
+            display: block;
+            width: 700px;
+            height: 150px;
+            border: 1px #d1d1d1 solid;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
+        }
+
+        #content #post textarea:hover {
+            border: 1px #9bdf70 solid;
+            background: #f0fbeb;
+        }
+
+        #content #post #postBt,
+        #content #post #clearBt {
+            float: right;
+            margin-left: 5px;
+            padding: 3px;
+        }
+
+        #comment {
+            overflow: hidden;
+        }
+
+        #comment p {
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 10px;
+        }
+
+        #comment p:nth-child(odd) {
+            border: 1px solid #e3e197;
+            background: #ffd;
+        }
+
+        #comment p:nth-child(even) {
+            border: 1px solid #adcd3c;
+            background: #f2fddb;
+        }
+
+        /*#comment p span{display:inline; float:left;}*/
+        #comment p .right {
+            text-align: right;
+        }
+
+        #comment p .msg {
+            width: 738px;
+        }
+
+        #comment p .datetime {
+            width: 200px;
+            color: #999;
+            text-align: right;
+        }
+
+        .gengduo1 {
+            color: black;
+            font-size: 14px;
+            position: relative;
+            top: 30px;
+        }
+
+        .gengduo1 a {
+            text-decoration: none;
+            font-size: 14px;
+            color: rgb(47, 115, 216);
+        }
+
+        .gengduo1 a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .gengduo {
+            color: black;
+            font-size: 14px;
+        }
+
+        .gengduo a {
+            text-decoration: none;
+            font-size: 14px;
+            color: rgb(47, 115, 216);
+        }
+
+        .gengduo a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .box {
+            width: 697px;
+            height: 150px;
+            border: 1px solid gray;
+            position: relative;
+            top: 0px;
+        }
+
+        #text1 {
+            width: 697px;
+            height: 150px;
+            resize: none;
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+        }
+
+        #text1:hover {
+            border: 1px #9bdf70 solid;
+            background: #f0fbeb;
+        }
+
+        #text2:hover {
+            border: 1px #9bdf70 solid;
+            background: #f0fbeb;
+        }
+
+        .box ul {
+            list-style: none;
+        }
+
+        .box ul li {
+            width: 697px;
+            line-height: 30px;
+            font-size: 14px;
+            border: 1px solid #adcd3c;
+            background: #f2fddb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .box ul li a {
+            color: green;
+            float: right;
+            text-decoration: none;
+        }
+
+        .box ul li .time {
+            float: right;
+            color: black;
+        }
+
+        #btn1 {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(131, 184, 131);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            left: 620px;
+        }
+
+        .box1 {
+            width: 697px;
+            height: 150px;
+            border: 1px solid gray;
+            position: relative;
+            top: 0px;
+        }
+
+        #text2 {
+            width: 697px;
+            height: 150px;
+            resize: none;
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+        }
+
+        .box1 ol {
+            list-style: none;
+        }
+
+        .box1 ol li {
+            width: 697px;
+            line-height: 30px;
+            font-size: 14px;
+            border: 1px solid #adcd3c;
+            background: #f2fddb;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .box1 ol li a {
+            color: green;
+            float: right;
+            text-decoration: none;
+        }
+
+        .box1 ol li .time {
+            float: right;
+            color: black;
+        }
+
+        #btn2 {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(131, 184, 131);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            left: 620px;
+        }
+
+        .empty111 {
+            height: 50px;
+        }
+
+        .dingyue {
+            font-size: 14px;
+
+            color: gray;
+        }
+
+        .haoma img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .haoma a {
+            text-decoration: none;
+            font-size: 13px;
+            color: rgb(47, 115, 216);
+        }
+
+        .haoma a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        #myxiang_kan {
+            width: 600px;
+            height: 300px;
+            border: 5px solid rgba(78, 77, 77, 0.3);
+        }
+
+        #mykan_guo {
+            width: 600px;
+            height: 300px;
+            border: 5px solid rgba(78, 77, 77, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="black">
+        <div class="one1">
+            <a href="index.html">豆瓣</a><a href="">读书</a><a href="">电影</a><a href="">音乐</a><a href="">同城</a><a
+                href="">小组</a><a href="">阅读</a><a href="">FM</a><a href="">时间</a><a href="">豆品</a>
+        </div>
+        <div class="two1">
+            <a href="">下载豆瓣客户端</a><a href="登录注册.html" target="_blank">登录/注册</a>
+        </div>
+    </div>
+    <div class="blue">
+        <div class="big">
+            <div><a href="index.html">豆瓣电影</a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <div class="container">
+                <div class="bgDiv">
+                    <input type="text" name="搜索" id="sousuo" placeholder="搜索电影,电视剧,综艺,影人"><input type="button"
+                        class="searchButton" id="btnnn">
+                    <div class="suggest">
+                        <ul id="search-result">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="small">
+            <a href="">影讯&购票</a><a href="">选电影</a><a href="">电视剧</a><a href="">排行榜</a><a href="分类选电影.html">分类</a><a
+                href="">影评</a><a href="">2021年度榜单</a><a href="">2021书影音报告</a>
+        </div>
+    </div>
+    <a class="niandu" href=""></a>
+    <div class="bigbox">
+        <div class="leftbox">
+            <h1 class="one">魔法满屋&nbspEncanto&nbsp<span class="two">(2021)</span></h1>
+            <div class="empty"></div>
+            <div class="jianjie">
+                <div class="chang">
+                    <div class="image"><a href=""><img
+                                src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2807936075.webp"
+                                alt=""></a><br><a href="" id="miaoshu">更新描述或海报</a></div>&nbsp&nbsp&nbsp&nbsp
+                    <div class="yingren">导演:<a href="演员主页.html">杰拉德·布什</a>/<a href="">拜伦·霍华德</a>/<a
+                            href="">查里斯·卡斯特罗·史密斯</a><br>
+                        编剧:<a href="">查里斯·卡斯特罗·史密斯</a>/<a href="">杰拉德·布什</a>/<a href="">拜伦·霍华德</a>/<a
+                            href="">杰森·汉德</a>/<a href="">南茜·克鲁斯</a>/<a href="">林-曼努尔·米兰达</a><br>
+                        主演:<a href="">斯蒂芬妮·比翠丝</a>/<a href="">玛丽亚·塞西莉亚·波特罗</a>/<a href="">黛安·格雷罗</a>/<a
+                            href="">杰西卡·达罗</a>/<a href="">约翰·雷吉扎莫</a>/<a href="" id="gengduo">更多</a><br>
+                        类型: <span>动画 / 歌舞 / 奇幻</span><br>
+                        制片国家/地区: <span>美国</span><br>
+                        语言: <span>英语 / 西班牙语</span><br>
+                        上映日期: <span>2022-01-07(中国大陆) / 2021-11-24(美国) / 2021-12-24(美国网络)</span><br>
+                        片长: <span>102分钟</span><br>
+                        又名: <span>奇幻魔法屋(港) / 音乐的魔法</span><br>
+                        IMDb: <span>tt2953050</span>
+                    </div>
+                </div>
+                <div class="duan">
+                    <div class="pingfen">豆瓣评分</div>
+                    <div class="fenshu">
+                        <div class="fen">6.5</div>&nbsp&nbsp
+                        <div class="xingxing">&#9733&#9733&#9733&#9734&#9734<br><a href="">42193人评价</a></div>
+                    </div>
+                    <div class="wuxing">
+                        <div class="ha">
+                            <div class="m1">5星&nbsp</div>
+                            <div class="m1">4星&nbsp</div>
+                            <div class="m1">3星&nbsp</div>
+                            <div class="m1">2星&nbsp</div>
+                            <div class="m1">1星&nbsp</div>
+                        </div>
+                        <div>
+                            <div class="chang5"></div>
+                            <div class="w"></div>
+                            <div class="chang4"></div>
+                            <div class="w"></div>
+                            <div class="chang3"></div>
+                            <div class="w"></div>
+                            <div class="chang2"></div>
+                            <div class="w"></div>
+                            <div class="chang1"></div>
+                        </div>
+                        <div class="ha">
+                            <div class="a5">&nbsp5.3%</div>
+                            <div class="a5">&nbsp27.1%</div>
+                            <div class="a5">&nbsp55.2%</div>
+                            <div class="a5">&nbsp11.4%</div>
+                            <div class="a5">&nbsp1.0%</div>
+                        </div>
+                    </div>
+                    <div class="haoyu">好于&nbsp<a href="">24%&nbsp动画片</a><br>
+                        好于&nbsp<a href="">40%&nbsp奇幻片</a>
+                    </div>
+                </div>
+            </div>
+            <div class="empty1"></div>
+            <div class="kan" id="kanba">
+                <div class="xiangkan" id="xiang_kan">想看</div>
+                &nbsp&nbsp
+                <div class="xiangkan" id="kan_guo">看过</div>
+                &nbsp&nbsp
+                <div class="pingjia">评价:&#9734&#9734&#9734&#9734&#9734</div>
+            </div>
+            <div class="empty"></div>
+            <div class="yingping">
+                <div class="xie">
+                    <div class="xieyingping"><img
+                            src="https://img3.doubanio.com/f/shire/cc03d0fcf32b7ce3af7b160a0b85e5e66b47cc42/pics/short-comment.gif"
+                            alt=""><a href="">写短评</a></div>&nbsp&nbsp
+                    <div class="xieyingping"><img
+                            src="https://img3.doubanio.com/f/shire/5bbf02b7b5ec12b23e214a580b6f9e481108488c/pics/add-review.gif"
+                            alt=""><a href="">写影评</a></div>&nbsp&nbsp
+                    <div class="xieyingping"><a href="">分享到</a><select name="" id="fen">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select></div>
+                </div>
+                <div class="tuijian"><a href="">推荐</a></div>
+            </div>
+            <div class="empty1"></div>
+            <div class="green">魔法满屋的剧情简介 · · · · · ·</div>
+            <div class="empty2"></div>
+            <div class="juqing">
+                &nbsp&nbsp&nbsp&nbsp讲述一个非同寻常的家庭——马利加家族的故事,他们隐居在哥伦比亚的山区一座神奇的房子里,生活在一个充满活力的小镇:一个奇妙的、充满魅力的地方,奇迹谷。奇迹谷的魔力使这个家庭的每个孩子都拥有独特魔法天赋,从超强大神力到治愈他人的能力……除了米拉贝(斯蒂芬妮·比翠丝
+                Stephanie Beatriz 配音)。<br>
+                &nbsp&nbsp&nbsp&nbsp但是,当她发现围绕奇迹谷的魔法处于危险之中时,米拉贝下定决心,她这唯一无魔法天赋的马利加人,将成为这个特殊家庭的希望。</div>
+            <div class="empty"></div>
+            <div class="green">魔法满屋的演职员 · · · · · · <span>( <a href="">全部27</a> )</span></div>
+            <div class="empty2"></div>
+            <div class="yanzhiyuan">
+                <div class="pai"><a href="演员主页.html"><img
+                            src="https://img9.doubanio.com/view/celebrity/raw/public/p1456810614.66.jpg"
+                            alt=""></a><br><a href="">杰拉德·布什</a><br><span>导演</span></div>
+                <div class="pai"><a href="https://movie.douban.com/celebrity/1286985/"><img
+                            src="https://img9.doubanio.com/view/celebrity/raw/public/p1457505519.94.jpg"
+                            alt=""></a><br><a href="">拜伦·霍华德</a><br><span>导演</span></div>
+                <div class="pai"><a href="https://movie.douban.com/celebrity/1334711/"><img
+                            src="https://img1.doubanio.com/view/celebrity/raw/public/p2DaFDB4uKQcel_avatar_uploaded1379610938.87.jpg"
+                            alt=""></a><br><a href="">斯蒂芬妮·比翠丝</a><br><span>配&nbsp米拉贝&nbspMirabel Madrigal</span></div>
+                <div class="pai"><a href="https://movie.douban.com/celebrity/1464652/"><img
+                            src="https://img3.doubanio.com/view/personage/raw/public/24252c9c5ab5aa24e7f5d9a9535edfb0.jpg"
+                            alt=""></a><br><a href="">玛丽亚·塞西莉亚·波特罗</a><br><span>配&nbspAbuela Alma</span></div>
+                <div class="pai"><a href="https://movie.douban.com/celebrity/1331707/"><img
+                            src="https://img2.doubanio.com/view/celebrity/raw/public/p1555264521.51.jpg"
+                            alt=""></a><br><a href="">黛安·格雷罗</a><br><span>配&nbspIsabela Madrigal</span></div>
+                <div class="pai"><a href="https://movie.douban.com/celebrity/1010561/"><img
+                            src="https://img3.doubanio.com/view/celebrity/raw/public/p3140.jpg" alt=""></a><br><a
+                        href="">约翰·雷吉扎莫</a><br><span>配&nbspBruno</span></div>
+            </div>
+            <div class="empty6"></div>
+            <div class="green">魔法满屋的视频和图片 · · · · · · <span>( <a href="">预告片5</a> | <a href="">添加视频评论</a> | <a
+                        href="">图片664</a> · <a href="">添加</a> )</span></div>
+            <div class="empty2"></div>
+            <div class="yugao">
+                <div class="vedio"><a href="https://movie.douban.com/trailer/284862/#content" id="yugaoba">
+                        <div></div>
+                    </a></div>
+                <div class="tu"><img src="https://img3.doubanio.com/view/photo/sqxs/public/p2822589370.webp" alt="">
+                </div>
+                <div class="tu"><img src="https://img1.doubanio.com/view/photo/sqxs/public/p2822588418.webp" alt="">
+                </div>
+                <div class="tu"><img src="https://img1.doubanio.com/view/photo/sqxs/public/p2669055977.webp" alt="">
+                </div>
+                <div class="tu"><img src="https://img9.doubanio.com/view/photo/sqxs/public/p2805829785.webp" alt="">
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="green">魔法满屋的获奖情况 · · · · · · <span>( <a href="">全部</a> )</span></div>
+            <div class="empty2"></div>
+            <div class="huojiang"><a href="">第94届奥斯卡金像奖</a>&nbsp最佳动画长片(提名)&nbsp<a href="演员主页.html">杰拉德·布什</a>/<a
+                    href="">拜伦·霍华德</a>/<a href="">克拉克·斯宾塞</a></div>
+            <div class="huojiang"><a href="">第79届金球奖</a>&nbsp电影类&nbsp最佳动画长片</div>
+            <div class="huojiang"><a href="">第75届英国电影学院奖</a>&nbsp电影奖&nbsp最佳动画片(提名)</div>
+            <div class="empty"></div>
+            <div class="green">喜欢这部电影的人也喜欢 · · · · · ·</div>
+            <div class="empty2"></div>
+            <div class="xihuan">
+                <div class="lie"><a href=""><img
+                            src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2670448229.webp"
+                            alt=""></a><br><a href="">青春变形记</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2675958609.webp"
+                            alt=""></a><br><a href="">夏日友晴天</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2659301260.webp"
+                            alt=""></a><br><a href="">精灵旅社4:变身大冒险</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628052135.webp"
+                            alt=""></a><br><a href="">寻龙传说</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2616349563.webp"
+                            alt=""></a><br><a href="">1/2的魔法</a></div>
+            </div>
+            <div class="empty"></div>
+            <div class="xihuan">
+                <div class="lie"><a href=""><img
+                            src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2732782860.webp"
+                            alt=""></a><br><a href="">欢乐好声音2</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2681332523.webp"
+                            alt=""></a><br><a href="">天赐灵机</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867932442.webp"
+                            alt=""></a><br><a href="">光年正传</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2572847101.webp"
+                            alt=""></a><br><a href="">冰雪奇缘2</a></div>
+                <div class="lie"><a href=""><img
+                            src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.webp"
+                            alt=""></a><br><a href="">心灵奇旅</a></div>
+            </div>
+            <div class="empty"></div>
+            <div class="green">魔法满屋的短评 · · · · · · <span>( <a href="">全部 18012 条</a> )</span></div>
+            <div class="empty2"></div>
+            <div class="remen">热门/<a class="href">最新</a>/<a href="">好友</a></div>
+            <h1 class="three">请发表您的短评:</h1>
+            <div id="content">
+                <div id="post">
+                    <div style="background:rgb(145, 190, 145);">
+                        昵称:<input type="submit" id="shangtian" name="Submit3"
+                            style="border:none; background-color:rgb(148, 209, 148); color:black;" value="默认用户点击改变"
+                            onclick="prom()" />
+                        <input type="text" id="ritian"
+                            style="border:none; background-color:rgb(172, 204, 172); color:white;" onclick="prom()" />
+                        <!--disabled="disabled"-->
+                    </div>
+                    <div>
+                        <textarea class="transition"></textarea>
+                    </div>
+                    <input id="postBt" type="button"
+                        style="border:none; background-color:green; color:white;border-radius:5px; width:80px; height:30px;"
+                        value="发表留言" />
+                    <input id="clearBt" type="button"
+                        style="border:none; background-color:green; color:white;border-radius:5px; width:80px; height:30px;"
+                        value="清空" />
+                </div>
+                <div id="comment"></div>
+            </div>
+            <div class="gengduo">><a href="">更多短评10812条</a></div>
+            <div class="empty"></div>
+            <div class="green">魔法满屋的影评 · · · · · · <span>( <a href="">全部 194 条</a> )</span></div>
+            <div class="empty2"></div>
+            <div class="remen">热门/<a class="href">最新</a>/<a href="">好友</a></div>
+            <div>
+                <h1 class="three">请发表您的影评:</h1>
+                <div style="background:rgb(145, 190, 145);">
+                    昵称:<input type="submit" id="shangtian1" name="Submit3"
+                        style="border:none; background-color:rgb(148, 209, 148); color:black;" value="默认用户点击改变"
+                        onclick="prom1()" />
+                    <input type="text" id="ritian1"
+                        style="border:none; background-color:rgb(172, 204, 172); color:white;" onclick="prom1()" />
+                    <!--disabled="disabled"-->
+                </div>
+                <div class="box" id="bx">
+                    <textarea id="text1" cols="30" rows="10"></textarea>
+                    <input type="button" value="评论" id="btn1" onclick="ajaxHttpRequestFunc1()">
+                </div>
+            </div>
+            <div class="empty2"></div>
+            <div class="gengduo1">><a href="">更多影评194条</a></div>
+            <div class="empty111"></div>
+            <div class="green">讨论区 · · · · · · </div>
+            <div>
+                <h1 class="three">请发表您的评论:</h1>
+                <div style="background:rgb(145, 190, 145);">
+                    昵称:<input type="submit" id="shangtian2" name="Submit3"
+                        style="border:none; background-color:rgb(148, 209, 148); color:black;" value="默认用户点击改变"
+                        onclick="prom2()" />
+                    <input type="text" id="ritian2"
+                        style="border:none; background-color:rgb(172, 204, 172); color:white;" onclick="prom2()" />
+                    <!--disabled="disabled"-->
+                </div>
+                <div class="box1" id="bx1">
+                    <textarea id="text2" cols="30" rows="10"></textarea>
+                    <input type="button" value="评论" id="btn2">
+                </div>
+            </div>
+            <div class="gengduo1"><a href="">>去这部影片的讨论区(全部100条)</a></div>
+        </div>&nbsp&nbsp&nbsp&nbsp
+        <div class="rightbox">
+            <div class="empty11"></div>
+            <div class="green1">以下片单推荐 · · · · · · <span>( <a href="">全部</a> )</span></div>
+            <div class="a"><a href="">豆瓣电影【口碑榜】2021-11-28 更新 </a>(影志)</div>
+            <div class="a"><a href="">迪士尼官方经典动画电影长片列表 </a>(太阳的倒影)</div>
+            <div class="a"><a href="">封闭空间:密室 / 居所 / 医院 / 建筑</a>(苏乏)</div>
+            <div class="a"><a href="">进口电影片单</a>(观望)</div>
+            <div class="a"><a href="">1977-2021全球票房前20</a>(等一个人)</div>
+            <div class="empty10"></div>
+            <div class="green2">谁在看这部电影 · · · · · · </div>
+            <div class="empty11"></div>
+            <div class="liang">
+                <div class="touxiang"><a href=""><img src="https://img2.doubanio.com/icon/u210612427-1.jpg" alt=""></a>
+                </div>&nbsp&nbsp
+                <div class="shijian"><a href="">Parsec</a><br>53分钟前&nbsp看过&nbsp&#9733&#9733&#9734&#9734&#9734</div>
+            </div>
+            <div class="liang">
+                <div class="touxiang"><a href=""><img src="https://img2.doubanio.com/icon/u243223667-1.jpg" alt=""></a>
+                </div>&nbsp&nbsp
+                <div class="shijian"><a href="">钫克</a><br>1个小时前&nbsp看过&nbsp&#9733&#9733&#9733&#9734&#9734</div>
+            </div>
+            <div class="liang">
+                <div class="touxiang"><a href=""><img src="https://img2.doubanio.com/icon/u171162326-1.jpg" alt=""></a>
+                </div>&nbsp&nbsp
+                <div class="shijian"><a href="">Jeffery</a><br>1个小时前&nbsp看过&nbsp&#9733&#9733&#9734&#9734&#9734</div>
+            </div>
+            <div class="kanguo1"><a href="">47294人看过</a>/<a href="">19188人想看</a></div>
+            <div class="empty10"></div>
+            <div class="dingyue">订阅魔法满屋的评论:</div>
+            <div class="haoma"><img src="https://p1.ssl.qhimgs1.com/sdr/400__/t0158dc233ea987f6db.jpg" alt=""><a
+                    href="">feed: rss 2.0</a></div>
+        </div>
+    </div>
+    <div id="myxiang_kan" title="想看的电影"
+        style="position: relative;z-index: 10000;top: -2800px;left: 300px;background-color: white;display: none;">
+        <form action="">
+            <p class="xiaogreen"
+                style="display:block;width: 600px;height: 50px;background-color: #b6d1a5;line-height: 50px;font-size: 22px;color: green;">
+                添加收藏:我想看这部电影
+            <div style="float: right;color: #999;font-size: 13px;position: relative;top: -40px;left: -20px;cursor: pointer;"
+                id="chacha">
+                &#10005</div>
+            </p>
+            <div class="zuiyoubian" style="display: flex;justify-content: flex-end;flex-direction: row;"><a href=""
+                    style="text-decoration: none;color: rgb(47, 115, 216);font-size: 13px;">缩起&nbsp&#9650</a>
+            </div>
+            <div style="height: 30px;"></div>
+            <p class="xiaoblack" style="font-size: 14px;color: black;">标签(多个标签用空格分隔):</p>
+            <input type="text" id="biaoqian" class="tongyong"
+                style="width: 300px;height: 20px;border: 0.3px solid black;">
+            <div class="xiaoempty" style="height: 25px;"></div>
+            <p class="xiaoblack">简短评论:</p>
+            <input type="text" id="pinglun" class="tongyong"
+                style="width: 450px;height: 40px;border: 0.3px solid black;">
+            <div class="zijikejian"
+                style="font-size: 15px;color: black;height: 35px;line-height: 35px;width: 100px;position: relative;left: 512px;">
+                &#9744仅自己可见</div>
+            <div class="fenliangce"
+                style="display: flex;justify-content: space-between;width: 600px;height: 50px;background-color: rgb(226, 220, 220);">
+                <div style="font-size: 14px;color: gray;height: 50px;line-height: 50px;">分享到&nbsp&nbsp&nbsp豆瓣广播</div>
+                <input type="button" value="保存" id="baocun"
+                    style="width: 60px;height: 30px;border: 0.3ox solid black;font-size: 14px;color: black;line-height: 20px;text-align: center;background-color: white;position: relative;top: 10px;">
+            </div>
+        </form>
+    </div>
+    <div id="mykan_guo" title="看过的电影"
+        style="position: relative;z-index: 10000;top: -2800px;left: 300px;background-color: white;display: none;">
+        <form action="">
+            <p class="xiaogreen"
+                style="display:block;width: 600px;height: 50px;background-color: #b6d1a5;line-height: 50px;font-size: 22px;color: green;">
+                添加收藏:我看过这部电影
+            <div style="float: right;color: #999;font-size: 13px;position: relative;top: -40px;left: -20px;cursor: pointer;"
+                id="chacha2">
+                &#10005</div>
+            </p>
+            <div class="zuiyoubian" style="display: flex;justify-content: space-between;flex-direction: row;">
+                <div class="xiaoblack">给个评价吧?(可选):&#9734&#9734&#9734&#9734&#9734</div>
+                <a href="" style="text-decoration: none;color: rgb(47, 115, 216);font-size: 13px;">缩起&nbsp&#9650</a>
+            </div>
+            <div style="height: 30px;"></div>
+            <p class="xiaoblack" style="font-size: 14px;color: black;">标签(多个标签用空格分隔):</p>
+            <input type="text" id="biaoqian1" class="tongyong"
+                style="width: 300px;height: 20px;border: 0.3px solid black;">
+            <div class="xiaoempty" style="height: 25px;"></div>
+            <p class="xiaoblack">简短评论:</p>
+            <input type="text" id="pinglun1" class="tongyong"
+                style="width: 450px;height: 40px;border: 0.3px solid black;">
+            <div class="zijikejian"
+                style="font-size: 15px;color: black;height: 35px;line-height: 35px;width: 100px;position: relative;left: 512px;">
+                &#9744仅自己可见</div>
+            <div class="fenliangce"
+                style="display: flex;justify-content: space-between;width: 600px;height: 50px;background-color: rgb(226, 220, 220);">
+                <div style="font-size: 14px;color: gray;height: 50px;line-height: 50px;">分享到&nbsp&nbsp&nbsp豆瓣广播</div>
+                <input type="button" value="保存" id="baocun1"
+                    style="width: 60px;height: 30px;border: 0.3ox solid black;font-size: 14px;color: black;line-height: 20px;text-align: center;background-color: white;position: relative;top: 10px;">
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    var named;
+    function delete1(id) {
+        localStorage.removeItem(id);
+        this.Storage.writeData();
+    }
+    function prom() {
+
+        var name = prompt("请输入您的用户名", "");//将输入的内容赋给变量 name ，
+        named = name;
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+
+        if (named)//如果返回的有内容
+
+        {
+
+            alert("欢迎您:" + name)
+            document.getElementById("shangtian").style.display = "none";
+            document.getElementById("ritian").value = named;
+
+        }
+        else {
+            document.getElementById("ritian").value = "匿名发言者";
+        }
+
+    }
+    var Storage =
+    {
+        saveData: function ()//保存数据
+        {
+
+            var data = document.querySelector("#post textarea");
+            if (data.value != "") {
+                var time = new Date().getTime() + Math.random() * 5;//getTime是Date对象中的方法，作用是返回 1970年01月01日至今的毫秒数
+                if (named) {
+                    localStorage.setItem(time, data.value + "|" + named + "|" + this.getDateTime());//将毫秒数存入Key值中，可以降低Key值重复率
+                }
+                else {
+                    localStorage.setItem(time, data.value + "|" + "匿名发言者" + "|" + this.getDateTime());//将毫秒数存入Key值中，可以降低Key值重复率
+                }
+
+                data.value = "";
+                this.writeData();
+            }
+            else {
+                alert("请填写您的留言!");
+            }
+        },
+        writeData: function ()//输出数据
+        {
+            var dataHtml = "", data = "";
+            for (var i = localStorage.length - 1; i >= 0; i--)//效率更高的循环方法
+            {
+                data = localStorage.getItem(localStorage.key(i)).split("|");
+
+                //dataHtml += "<p><span class=\"msg\">" + data[0] + "</span><span class=\"datetime\">" + data[1] + "</span><span>" + data[2]+"</span></p>";
+                dataHtml += "<span style=>" + data[1] + "<span style=\"float:right\">" + data[2] + "</span><p><span class=\"msg\">" + data[0] + "<input style=\"float:right;border:none;border-radius:5px;\" id=\"clearBt\" type=\"button\" onclick=\"delete1(" + localStorage.key(i) + ");\" value=\"删除\"/>" + "</span></p>";
+            }
+            document.getElementById("comment").innerHTML = dataHtml;
+        },
+        clearData: function ()//清空数据
+        {
+            if (localStorage.length > 0) {
+                if (window.confirm("清空后不可恢复,是否确认清空?")) {
+                    localStorage.clear();
+                    this.writeData();
+                }
+            }
+            else {
+                alert("没有需要清空的数据!");
+            }
+        },
+        getDateTime: function ()//获取日期时间，例如 2012-03-08 12:58:58
+        {
+            var isZero = function (num)//私有方法，自动补零
+            {
+                if (num < 10) {
+                    num = "0" + num;
+                }
+                return num;
+            }
+
+            var d = new Date();
+            return d.getFullYear() + "-" + isZero(d.getMonth() + 1) + "-" + isZero(d.getDate()) + " " + isZero(d.getHours()) + ":" + isZero(d.getMinutes()) + ":" + isZero(d.getSeconds());
+        }
+    }
+
+    window.onload = function () {
+        Storage.writeData();//当打开页面的时候，先将localStorage中的数据输出一边，如果没有数据，则输出空
+        document.getElementById("postBt").onclick = function () { Storage.saveData(); }//发表评论按钮添加点击事件，作用是将localStorage中的数据输出
+        document.getElementById("clearBt").onclick = function () { Storage.clearData(); }//清空所有已保存的数据
+    }
+
+</script>
+<script>
+    var named1;
+    function prom1() {
+
+        var name1 = prompt("请输入您的用户名", "");//将输入的内容赋给变量 name ，
+        named1 = name1;
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+
+        if (named1)//如果返回的有内容
+
+        {
+
+            alert("欢迎您:" + name1)
+            document.getElementById("shangtian1").style.display = "none";
+            document.getElementById("ritian1").value = named1;
+
+        }
+        else {
+            document.getElementById("ritian1").value = "匿名发言者";
+        }
+
+    }
+    function $(id) {
+        return document.getElementById(id);
+    }
+    //创造一个ul
+    var ul = document.createElement("ul");
+    $("bx").appendChild(ul);
+    $("btn1").onclick = function () {
+        //  不能用$('text').innerHTML，因为成对的标签才能用innerHTML，获取中间的文字
+        var sum = $("text1").value;
+        if (sum.length == 0) {
+            //评论为空
+            alert("不能发表空评论");
+        } else {
+            //创建li标签
+            var sum2 = document.createElement("li");
+            //将li设为ul的子标签
+            ul.appendChild(sum2);
+            // 每一个li都会放在ul最前面li的前面，按照时间顺序从上到下
+            ul.insertBefore(sum2, ul.children[0]);
+            var d1 = new Date();
+            var s = "来自用户:";
+            sum = sum + "<a href='javascript:void(0)'>删除</a>" + "<span class='time'>" + s + named1 + d1.getFullYear() + "-" + (d1.getMonth() + 1) + "-" + (d1.getDate()) + " " + (d1.getHours()) + ":" + (d1.getMinutes()) + ":" + (d1.getSeconds()) + "</span>";
+            //将文本放入li中
+            sum2.innerHTML = sum;
+            $("text1").value = "";
+            // 获取所有标签a中的id存入数组中
+            var sum6 = document.getElementsByTagName("a");
+            for (var j = 0; j < sum6.length; j++) {
+                // 将a设为可点击事件，删除a就是删除‘删除’所在的超链接
+                sum6[j].onclick = function () {
+                    ul.removeChild(this.parentNode);
+                    var text1 = $("#text1").value;
+                    if (text1) {
+                        $.ajax({
+                            url: "http://121.4.229.95:8080/movie/:movield/longComment",
+                            headers: {
+                                "Authorization": localStorage.getItem("text1")
+                            },
+                            type: "delete",
+                            data: text1,
+                            success: function (date) {
+                                console.log(date);
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script>
+    var named2;
+    function prom2() {
+
+        var name2 = prompt("请输入您的用户名", "");//将输入的内容赋给变量 name ，
+        named2 = name2;
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+
+        if (named2)//如果返回的有内容
+
+        {
+
+            alert("欢迎您:" + name2)
+            document.getElementById("shangtian2").style.display = "none";
+            document.getElementById("ritian2").value = named2;
+
+        }
+        else {
+            document.getElementById("ritian2").value = "匿名发言者";
+        }
+
+    }
+    function $(id) {
+        return document.getElementById(id);
+    }
+    //创造一个ol
+    var ol = document.createElement("ol");
+    $("bx1").appendChild(ol);
+    $("btn2").onclick = function () {
+        //  不能用$('text').innerHTML，因为成对的标签才能用innerHTML，获取中间的文字
+        var sum3 = $("text2").value;
+        if (sum3.length == 0) {
+            //评论为空
+            alert("不能发表空评论");
+        } else {
+            //创建li标签
+            var sum4 = document.createElement("li");
+            //将li设为ul的子标签
+            ol.appendChild(sum4);
+            // 每一个li都会放在ul最前面li的前面，按照时间顺序从上到下
+            ol.insertBefore(sum4, ol.children[0]);
+            var d2 = new Date();
+            var s1 = "来自用户:"
+            sum3 = sum3 + "<a href='javascript:void(0)'>删除</a>" + "<span class='time'>" + s1 + named2 + d2.getFullYear() + "-" + (d2.getMonth() + 1) + "-" + (d2.getDate()) + " " + (d2.getHours()) + ":" + (d2.getMinutes()) + ":" + (d2.getSeconds()) + "</span>";
+            //将文本放入li中
+            sum4.innerHTML = sum3;
+            $("text2").value = "";
+            // 获取所有标签a中的id存入数组中
+            var sum5 = document.getElementsByTagName("a");
+            for (var j = 0; j < sum5.length; j++) {
+                // 将a设为可点击事件，删除a就是删除‘删除’所在的超链接
+                sum5[j].onclick = function () {
+                    ol.removeChild(this.parentNode);
+                    var title = $("#text2").value;
+                    if (title) {
+                        $.ajax({
+                            url: "http://121.4.229.95:8080/discussion/:movield",
+                            headers: {
+                                "Authorization": localStorage.getItem("title")
+                            },
+                            type: "delete",
+                            data: title,
+                            success: function (date) {
+                                console.log(date);
+                            }
+                        })
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    function ajaxHttpRequestFunc1() {
+        //创建xmlHttpRequest对象,即一个用于保存异步调用对象的变量
+        let xmlHttpRequest;
+        var text1 = $("#text1").value;
+        if (window.ActiveXObject) {
+            //IE浏览器
+            xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            //netscape浏览器
+        } else if (window.XMLHttpRequest) {
+            xmlHttpRequest = new XMLHttpRequest();
+        }
+        xmlHttpRequest.onreadystatechange = function () {
+            //设置响应http请求状态变化的时间
+            console.log("请求过程", xmlHttpRequest.readyState);
+            if (xmlHttpRequest.readyState == 4) {
+                console.log("状态码为", xmlHttpRequest.status);
+            }
+            if (xmlHttpRequest.status == 200) {
+                console.log("异步调用返回的数据是", xmlHttpRequest.responseText);
+                document.getElementById("text1") = xmlHttpRequest.responseText;
+            } else {
+                alert("error:HTTP状态码为" + xmlHttpRequest.status);
+            }
+        }
+    }
+    xmlHttpRequest.open("GET", "http://121.4.229.95:8080/user/:username/longComment", true);
+    xmlHttpRequest.send(null);
+</script>
+<script type="text/javascript" language="javascript">
+    $("#btn2").on("click", function () {
+        var title = $("#text2").value;
+        if (title) {
+            $.ajax({
+                url: "http://121.4.229.95:8080/discussion/:movield",
+                headers: {
+                    "Authorization": localStorage.getItem("title")
+                },
+                type: "POST",
+                data: title,
+                contentType: "application/x-www-form-urlencoded",
+                success: function (date) {
+                    console.log(date);
+                    document.getElementById("text2") = date;
+                }
+            })
+        }
+    })
+</script>
+<script>
+    var xiang = document.getElementById("xiang_kan");
+    var xianger = document.getElementById("myxiang_kan");
+    var cha1 = document.getElementById("chacha");
+    var kan = document.getElementById("kan_guo");
+    var kaner = document.getElementById("mykan_guo");
+    var cha2 = document.getElementById("chacha2");
+    cha1.onclick = function () {
+        xianger.style.display = "none";
+    }
+    xiang.onclick = function () {
+        xianger.style.display = "block";
+    }
+    kan.onclick = function () {
+        kaner.style.display = "block";
+    }
+    cha2.onclick = function () {
+        kaner.style.display = "none";
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    $("#baocun").on("click", function () {
+        xianger.style.display = "none";
+        xiang.style.display = "none";
+        kan.style.display = "none";
+        document.getElementById("kanba").innerHTML = document.getElementById("biaoqian").value + document.getElementById("pinglun") + "<a href='javascript:void(0)'>删除</a>";
+        var sum10 = document.getElementsByTagName("a");
+        for (var j = 0; j < sum10.length; j++) {
+            // 将a设为可点击事件，删除a就是删除‘删除’所在的超链接
+            sum10[j].onclick = function () {
+                document.getElementById("kanba").innerHTML = "none";
+                var label = $("#biaoqian").value;
+                var comment = $("#pinglun").value;
+                if (label && comment) {
+                    $.ajax({
+                        url: "http://121.4.229.95:8080/user/:username/wangSee",
+                        headers: {
+                            "Authorization": localStorage.getItem("label"),
+                            "Authorization": localStorage.getItem("comment")
+                        },
+                        type: "delete",
+                        success: function (date) {
+                            console.log(date);
+                        }
+                    })
+                }
+            }
+        }
+        var label = $("#biaoqian").value;
+        var comment = $("#pinglun").value;
+        if (label && comment) {
+            $.ajax({
+                type: "GET",
+                url: "http://121.4.229.95:8080/user/:username/wangSee",
+                data: {
+                    label: $("#biaoqian").value,
+                    comment: $("#pinglun").value,
+                    username: $("#shouji")[0].value
+                },
+                success: function (date) {
+                    console.log(date)
+                },
+                contentType: "application/x-www-form-urlencoded",
+            });
+        }
+    })
+</script>
+<script type="text/javascript" language="javascript">
+    $("#baocun1").on("click", function () {
+        kaner.style.display = "none";
+        kan.style.display = "none";
+        xiang.style.display = "none";
+        document.getElementById("kanba").innerHTML = document.getElementById("biaoqian1").value + document.getElementById("pinglun1") + "<a href='javascript:void(0)'>删除</a>";
+        var sum11 = document.getElementsByTagName("a");
+        for (var j = 0; j < sum11.length; j++) {
+            // 将a设为可点击事件，删除a就是删除‘删除’所在的超链接
+            sum11[j].onclick = function () {
+                document.getElementById("kanba").innerHTML = "none";
+                var label = $("#biaoqian1").value;
+                var comment = $("#pinglun1").value;
+                if (label && comment) {
+                    $.ajax({
+                        url: "http://121.4.229.95:8080/user/:username/seen",
+                        headers: {
+                            "Authorization": localStorage.getItem("biaoqian1"),
+                            "Authorization": localStorage.getItem("pinglun1")
+                        },
+                        type: "delete",
+                        success: function (date) {
+                            console.log(date);
+                        }
+                    })
+                }
+            }
+        }
+        var label = $("#biaoqian1").value;
+        var comment = $("#pinglun1").value;
+        if (label && comment) {
+            $.ajax({
+                type: "GET",
+                url: "http://121.4.229.95:8080/user/:username/seen",
+                data: {
+                    label: $("#biaoqian").value,
+                    comment: $("#pinglun").value,
+                    username: $("#shouji")[0].value
+                },
+                success: function (date) {
+                    console.log(date)
+                },
+                contentType: "application/x-www-form-urlencoded",
+            });
+        }
+    })
+</script>
+<script>
+    import { username } from "./登录注册.html"
+</script>
+
+</html>

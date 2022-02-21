@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>登录注册</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .green {
+            width: 100%;
+            height: 70px;
+            background-color: rgb(232, 235, 232);
+        }
+
+        .image {
+            height: 70px;
+            width: 160px;
+            position: relative;
+            left: 100px;
+        }
+
+        .image img {
+            height: 70px;
+            width: 160px;
+        }
+
+        .bigbox {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .dashouji {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .tupian {
+            background-image: url(img6.png);
+            background-repeat: no-repeat;
+            width: 400px;
+            height: 550px;
+            background-size: 100% 100%;
+        }
+
+        .liangge {
+            height: 35px;
+            display: flex;
+            width: 400px;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .xiazai {
+            width: 120px;
+            height: 35px;
+            background-color: black;
+            text-align: center;
+        }
+
+        .xiazai a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            text-align: center;
+            line-height: 35px;
+            width: 120px;
+            height: 35px;
+        }
+
+        .erweima {
+            width: 35px;
+            height: 35px;
+        }
+
+        .erweima img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .empty {
+            height: 50px;
+        }
+
+        .empty1 {
+            height: 50px;
+        }
+
+        .dengluzhuce {
+            width: 300px;
+            height: 470px;
+            border: 0.2px solid gray;
+            position: relative;
+            top: 70px;
+        }
+
+        .mima {
+            height: 50px;
+            width: 300px;
+            color: black;
+            font-size: 25px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: 25px;
+            border-bottom: 1px solid rgb(235, 229, 229);
+        }
+
+        #shouji {
+            width: 250px;
+            height: 35px;
+            background-color: white;
+            position: relative;
+            left: 25px;
+            border: 0.3px solid rgb(143, 141, 141);
+            color: gray;
+            margin: 0 auto;
+            font-size: 14px;
+            border-radius: 2%;
+        }
+
+        #mima1 {
+            width: 250px;
+            height: 35px;
+            margin: 0 auto;
+            position: relative;
+            left: 25px;
+            background-color: white;
+            border: 0.3px solid rgb(153, 149, 149);
+            color: gray;
+            font-size: 14px;
+            border-radius: 2%;
+        }
+
+        .empty2 {
+            height: 30px;
+        }
+
+        #btn {
+            width: 250px;
+            height: 30px;
+            background-color: green;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            left: 25px;
+        }
+
+        .gongju {
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .haiwai {
+            color: green;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            left: -25px;
+        }
+
+        .xiugai {
+            color: green;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            left: 25px;
+        }
+
+        .empty3 {
+            height: 60px;
+        }
+
+        .disanfang {
+            width: 300px;
+            text-align: center;
+            font-size: 13px;
+            color: rgb(197, 194, 194);
+        }
+
+        .liangge1 {
+            width: 300px;
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .liangge1 a {
+            text-decoration: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .liangge1 a img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .empty5 {
+            height: 15px;
+        }
+
+        #HyperLink3 {
+            width: 250px;
+            height: 30px;
+            background-color: gray;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            display: block;
+            left: 25px;
+            text-decoration: none;
+        }
+
+        .empp {
+            height: 20px;
+        }
+
+        #mykan_guo {
+            width: 600px;
+            height: 300px;
+            border: 5px solid rgba(78, 77, 77, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="green">
+        <div class="image"><img src="https://img.sj33.cn/uploads/202011/7-201114124312920.jpg" alt=""></div>
+    </div>
+    <div class="empty"></div>
+    <div class="bigbox">
+        <div class="dashouji">
+            <div class="tupian"></div>
+            <div class="liangge">
+                <div class="xiazai"><a href="">下载豆瓣APP</a></div>&nbsp
+                <div class="erweima"><img
+                        src="https://img3.doubanio.com/f/accounts/34000ef2d09d439fc2e683b8a7c39754ae8137ab/passport/pics/ic_qr_mini_login.png"
+                        alt=""></div>
+            </div>
+        </div>&nbsp&nbsp&nbsp&nbsp
+        <div class="dengluzhuce">
+            <div class="mima">密 码 登 录</div>
+            <div class="empty1"></div>
+            <form action="">
+                <input type="text" name="shoujihao" id="shouji" placeholder="手机号/邮箱">
+                <div class="empty2"></div>
+                <input type="password" name="mima" id="mima1" placeholder="密码">
+                <div class="empty2"></div>
+                <input type="button" id="btn" value="登录豆瓣">
+                <div class="empp"></div>
+                <a id='HyperLink3' onclick="logout()" href="javascript:window.opener=null;%20window.close();">退出登录</a>
+            </form>
+            <div class="gongju">
+                <div class="xiugai" id="xiumi">修改密码</div>
+                <div class="haiwai">海外手机登录</div>
+            </div>
+            <div class="empty3"></div>
+            <div class="disanfang">-----------------第三方登录------------------</div>
+            <div class="empty5"></div>
+            <div class="liangge1"><a
+                    href="https://www.douban.com/accounts/connect/wechat/?from=None&redir=https%3A//www.douban.com/people/252939035/%3F_i%3D4477491308JUaU%2C4495269308JUaU"><img
+                        src="https://img0.baidu.com/it/u=2178889687,3517608568&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=506"
+                        alt=""></a>&nbsp&nbsp&nbsp&nbsp<a
+                    href="https://www.douban.com/accounts/connect/sina_weibo/?from=None&redir=https%3A//www.douban.com/people/252939035/%3F_i%3D4477491308JUaU%2C4495269308JUaU&fallback="><img
+                        src="http://img.uuwtq.com/uploads/i_1_4207981259x347318880_27.jpg" alt=""></a></div>
+        </div>
+    </div>
+    <div id="mykan_guo" title="修改密码"
+        style="position: relative;z-index: 10000;top: -500px;background-color: white;left: 300px;display: none;">
+        <form action="">
+            <p class="xiaogreen"
+                style="display:block;width: 600px;height: 50px;background-color: #b6d1a5;line-height: 50px;font-size: 22px;color: green;">
+                修改密码
+            <div style="float: right;color: #999;font-size: 13px;position: relative;top: -40px;left: -20px;cursor: pointer;"
+                id="chacha2">
+                &#10005</div>
+            </p>
+            <div class="zuiyoubian" style="display: flex;justify-content: flex-end;flex-direction: row;">
+                <a href="" style="text-decoration: none;color: rgb(47, 115, 216);font-size: 13px;">缩起&nbsp&#9650</a>
+            </div>
+            <div style="height: 30px;"></div>
+            <p class="xiaoblack" style="font-size: 14px;color: black;">旧密码:</p>
+            <input type="text" id="biaoqian" class="tongyong"
+                style="width: 450px;height: 20px;border: 0.3px solid black;">
+            <div class="xiaoempty" style="height: 25px;"></div>
+            <p class="xiaoblack">新密码:</p>
+            <input type="text" id="pinglun" class="tongyong"
+                style="width: 450px;height: 20px;border: 0.3px solid black;">
+            <div class="fenliangce"
+                style="display: flex;justify-content: space-between;width: 600px;height: 50px;background-color: rgb(226, 220, 220);position: relative;top: 45px;">
+                <div style="font-size: 14px;color: gray;height: 50px;line-height: 50px;">请遵守豆瓣相关协议</div>
+                <input type="button" value="提交" id="baocun"
+                    style="width: 60px;height: 30px;border: 0.3ox solid black;font-size: 14px;color: black;line-height: 20px;text-align: center;background-color: white;position: relative;top: 10px;">
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    $("#btn").on("click", function () {
+        var retel = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/g;
+        var username = retel.test($("#shouji")[0].value);
+        var password = $("#mima1").value.length >= 6;
+        var reemail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/g;
+        var youxiang = reemail.test($("#shouji")[1].value);
+        if (!password) {
+            console.log("密码不能少于六位");
+        }
+        if (!username) {
+            console.log("请输入正确的手机号");
+        }
+        if (!youxiang) {
+            console.log("请输入正确的邮箱格式");
+        }
+        if (password && username && youxiang) {
+            axios({
+                method: "post",
+                url: "http://121.4.229.95:8090/login",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "Authorization": localStorage.getItem("username"),
+                    "Authorization": localStorage.getItem("youxiang"),
+                    "Authorization": localStorage.getItem("password"),
+                },
+                data: {
+                    username: $("#shouji")[0].value,
+                    youxiang: $("#shouji")[1].value,
+                    password: $("#mima1").value
+                }
+            }).then(function (date) {
+                console.log(date);
+            });
+        }
+    })
+</script>
+<script type="text/javascript" language="javascript">
+    function logout() {
+        if (confirm("确定退出登录吗?")) {
+            top.location = "../Login.aspx";
+        }
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    var xiang1 = document.getElementById("xiumi");
+    var xianger1 = document.getElementById("mykan_guo");
+    var cha2 = document.getElementById("chacha2");
+    cha2.onclick = function () {
+        xianger1.style.display = "none";
+    }
+    xiang1.onclick = function () {
+        xianger1.style.display = "block";
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    $("#baocun").on("click", function () {
+        var oldPassword = $("#biaoqian").value.length >= 6;
+        var newPassword = $("#pinglun").value.length >= 6;
+        if (!oldPassword) {
+            console.log("旧密码不能少于六位");
+        }
+        if (!newPassword) {
+            console.log("新密码不能少于六位");
+        }
+        if (oldPassword && newPassword) {
+            axios({
+                method: "post",
+                url: "http://121.4.229.95:8090/user/password",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "Authorization": localStorage.getItem("oldPassword"),
+                    "Authorization": localStorage.getItem("newPassword")
+                },
+                data: {
+                    oldPassword: $("#biaoqian").value,
+                    newPassword: $("pinglun").value
+                }
+            }).then(function (date) {
+                console.log(date);
+            });
+        }
+    })
+</script>
+<script>
+    export { username }
+</script>
+
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>G的网页</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .black {
+            width: 100%;
+            height: 25px;
+            background-color: rgb(68, 68, 68);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .one {
+            width: 600px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .two {
+            width: 300px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .black a {
+            display: block;
+            font-size: 13px;
+            color: rgb(187, 184, 184);
+            text-decoration: none;
+            position: relative;
+            top: 5px;
+        }
+
+        .black a:hover {
+            color: white;
+        }
+
+        .you {
+            width: 300px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        .you input {
+            width: 200px;
+            height: 30px;
+            background-color: white;
+            font-size: 14px;
+            color: gray;
+            border: 0.5px solid rgb(196, 195, 195);
+        }
+
+        #btnnn {
+            width: 30px;
+            height: 30px;
+            background-image: url(img.jfif);
+            background-repeat: no-repeat;
+            background-size: 100% 30px;
+            border: 0.5px solid rgb(196, 195, 195);
+            position: relative;
+            top: 10px;
+        }
+
+        .green {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            background-color: rgb(225, 231, 226);
+        }
+
+        .zuo {
+            width: 600px;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        #a {
+            text-decoration: none;
+        }
+
+        #a img {
+            width: 150px;
+            height: 80px;
+        }
+
+        .b {
+            width: 100px;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        .b a {
+            text-decoration: none;
+            font-size: 18px;
+            color: green;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            width: 100px;
+        }
+
+        #yidong {
+            position: relative;
+            left: 20px;
+        }
+
+        .b a:hover {
+            background-color: green;
+            color: white;
+        }
+
+        .orange {
+            width: 20px;
+            height: 10px;
+            background-color: orange;
+            color: white;
+            font-size: 9px;
+            position: relative;
+            left: 650px;
+            top: -60px;
+        }
+
+        .empty {
+            height: 50px;
+        }
+
+        .bigbox {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .leftbox {
+            width: 650px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .rightbox {
+            width: 300px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .touxiang {
+            height: 60px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+
+        .tou {
+            width: 60px;
+            height: 60px;
+        }
+
+        .tou input {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            position: relative;
+            background-color: black;
+        }
+
+        .qianming {
+            height: 60px;
+            font-size: 20px;
+            color: black;
+        }
+
+        .qianming span {
+            font-size: 14px;
+            color: black;
+        }
+
+        .qianming a {
+            text-decoration: none;
+            color: gray;
+            font-size: 14px;
+        }
+
+        .toutou {
+            z-index: 1;
+            width: 60px;
+            height: 60px;
+            background-image: url(img4.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 60px;
+            position: relative;
+            top: -60px;
+        }
+
+        .da {
+            height: 15px;
+        }
+
+        .zhuye {
+            width: 400px;
+            height: 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            position: relative;
+            top: -50px;
+            left: 75px;
+        }
+
+        .zhuye a {
+            text-decoration: none;
+            font-size: 14px;
+            color: rgb(47, 115, 216);
+            text-align: center;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .zhuye a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty1 {
+            height: 20px;
+        }
+
+        .gray {
+            color: black;
+            height: 240px;
+            font-size: 17px;
+            border-radius: 2%;
+            background-color: rgb(247, 243, 243);
+            position: relative;
+            top: -40px;
+        }
+
+        .gray .nogreen {
+            color: gray;
+            font-size: 20px;
+            position: relative;
+            left: 50px;
+            cursor: pointer;
+            top: 30px;
+        }
+
+        .gray .green1 {
+            color: green;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            left: 50px;
+            top: 30px;
+        }
+
+        .gray .dongba {
+            font-size: 17px;
+            color: black;
+            position: relative;
+            top: 60px;
+        }
+
+        .riji {
+            height: 30px;
+            cursor: crosshair;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            position: relative;
+            top: -40px;
+        }
+
+        .riji:hover {
+            background-color: rgb(187, 216, 187);
+        }
+
+        .riji1 {
+            height: 30px;
+            cursor: crosshair;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            position: relative;
+        }
+
+        .riji1:hover {
+            background-color: rgb(187, 216, 187);
+        }
+
+        .ri {
+            font-size: 16px;
+            color: green;
+        }
+
+        .ri a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .ri a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .xie1 {
+            width: 200px;
+            height: 30px;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: row;
+        }
+
+        .xie1 a {
+            text-decoration: none;
+            font-size: 14px;
+            color: black;
+            height: 30px;
+            width: 80px;
+            text-align: center;
+            line-height: 30px;
+            border: 0.5px solid orange;
+            background-color: rgb(209, 178, 117);
+        }
+
+        .xie {
+            width: 80px;
+            height: 30px;
+            border: 0.5px solid orange;
+            background-color: rgb(209, 178, 117);
+        }
+
+        .xie a {
+            text-decoration: none;
+            font-size: 14px;
+            color: black;
+            height: 30px;
+            width: 80px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .three {
+            height: 20px;
+            width: 600px;
+            line-height: 20px;
+            font-size: 16px;
+            color: white;
+            background: green;
+            position: relative;
+            top: -35px;
+        }
+
+        .empty3 {
+            height: 40px;
+            position: relative;
+            top: -40px;
+        }
+
+        .x {
+            font-size: 14px;
+            color: black;
+            position: relative;
+            top: -30px;
+        }
+
+        .box {
+            width: 598px;
+            height: 150px;
+            border: 1px solid gray;
+            position: relative;
+            top: -35px;
+        }
+
+        #text1 {
+            width: 598px;
+            height: 150px;
+            resize: none;
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear;
+            -o-transition: all 0.5s linear;
+            -ms-transition: all 0.5s linear;
+            transition: all 0.5s linear;
+            color: black;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #text1:hover {
+            border: 1px #9bdf70 solid;
+            background: #f0fbeb;
+        }
+
+        .box ul {
+            list-style: none;
+        }
+
+        .box ul li {
+            width: 600px;
+            line-height: 30px;
+            font-size: 14px;
+            border: 1px solid #adcd3c;
+            background: #f2fddb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .box ul li a {
+            color: blue;
+            float: right;
+            text-decoration: none;
+        }
+
+        .box ul li .time {
+            float: right;
+            color: black;
+        }
+
+        #btn1 {
+            width: 80px;
+            height: 30px;
+            background-color: rgb(131, 184, 131);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            left: 520px;
+        }
+
+        .juse {
+            height: 120px;
+            border: 0.5px solid orange;
+            background-color: rgb(243, 229, 205);
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+        }
+
+        .fenceng {
+            height: 80px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            border-bottom: 0.5px solid rgb(187, 184, 184);
+        }
+
+        .image {
+            width: 60px;
+            height: 60px;
+        }
+
+        .wenziha {
+            color: black;
+            font-size: 14px;
+        }
+
+        .tianjia a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 13px;
+        }
+
+        .tianjia a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty10 {
+            height: 40px;
+        }
+
+        .guangbo {
+            color: black;
+            font-size: 16px;
+        }
+
+        .guangbo a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+        }
+
+        .guangbo a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty11 {
+            height: 20px;
+        }
+
+        .lanse a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .lanse a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        #jieshao {
+            width: 300px;
+            height: 100px;
+            background-color: white;
+            border: 0.3px solid black;
+        }
+
+        #weizhi {
+            position: relative;
+            top: -30px;
+            left: 260px;
+        }
+
+        .xiang {
+            position: relative;
+            top: -30px;
+        }
+
+        #gengxinjieshao {
+            width: 120px;
+            height: 20px;
+            background-color: rgb(180, 177, 177);
+            border: 0.3px solid black;
+            text-align: center;
+            line-height: 20px;
+            font-size: 14px;
+            color: white;
+            position: relative;
+            top: 70px;
+            left: -120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="black">
+        <div class="one">
+            <a href="index.html">豆瓣</a><a href="">读书</a><a href="">电影</a><a href="">音乐</a><a href="">同城</a><a
+                href="">小组</a><a href="">阅读</a><a href="">FM</a><a href="">时间</a><a href="">豆品</a>
+        </div>
+        <div class="two">
+            <a href="">下载豆瓣客户端</a><a href="" target="_blank">提醒</a><a href="">豆邮(1)</a><a href="">G的账号</a>
+        </div>
+    </div>
+    <div class="green">
+        <div class="zuo">
+            <div><a href="https://www.douban.com/" id="a"><img
+                        src="https://img.sj33.cn/uploads/202011/7-201114124312920.jpg" alt=""></a></div>
+            <div class="b" id="yidong"><a href="">首页</a></div>
+            <div class="b"><a href="">我的豆瓣</a></div>
+            <div class="b"><a href="">浏览发现</a></div>
+            <div class="b"><a href="">话题广场</a></div>
+        </div>
+        <div class="you"><input type="text" placeholder="搜索你感兴趣的内容和人" name="sousuo"><input type="button"
+                class="searchButton" id="btnnn"></div>
+    </div>
+    <div class="orange">new</div>
+    <div class="empty"></div>
+    <div class="bigbox">
+        <div class="leftbox">
+            <div class="touxiang">
+                <div class="tou"><input type="file" id="imgha" onclick="imgputting"></div>&nbsp&nbsp&nbsp&nbsp
+                <div class="qianming">G<br>
+                    <div class="da"></div><span>(<a href="">添加签名档</a>)</span>
+                </div>
+            </div>
+            <div class="toutou" id="imgs"></div>
+            <div class="zhuye">
+                <a href="">我的主页</a><a href="">广播</a><a href="">相册</a><a href="">日记</a><a href="">豆列</a><a
+                    href="">片单|书单</a><a href="">设置</a>
+            </div>
+            <div class="empty1"></div>
+            <div class="gray">
+                <div>&nbsp&nbsp&nbsp&nbspG,这里是你的主页,用来展示你的生活和发现,也是别人认识你的地方。
+                    完善你的个人资料,开始全新的豆瓣之旅吧。</div>
+                <div><span class="nogreen">1.上传头像&nbsp&#10004</span><br>
+                    <div class="green1" id="ziwojie">2.写一段自我介绍</div>
+                </div>
+                <div id="weizhi" style="display: none;"><input type="text" id="jieshao"><input type="button"
+                        id="gengxinjieshao" value="更新自我介绍"></div>
+                <div class="xiang"><span class="dongba">&nbsp&nbsp&nbsp&nbsp以上选项也可以在页面右上角你的帐号中找到。</span></div>
+            </div>
+            <div class="empty3"></div>
+            <div class="riji">
+                <div class="ri">我的日记 · · · · · · ( <a href="">全部</a> )</div>
+                <div class="xie"><a href="">&#10010&nbsp写日记</a></div>
+            </div>
+            <div class="x">在豆瓣上写日记,记录自己的生活、想法。</div>
+            <div class="riji1">
+                <div class="ri">我的相册 · · · · · · ( <a href="">创建0</a>· <a href="">关注0</a> )</div>
+                <div class="xie1"><a href="">&#10010&nbsp发照片</a>&nbsp&nbsp&nbsp&nbsp<a href="">&#10010&nbsp新建相册</a>
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="riji">
+                <div class="ri">留言板 · · · · · · ( <a href="">全部</a> )</div>
+            </div>
+            <div>
+                <h1 class="three">请发表您的评论:</h1>
+                <div style="background:rgb(145, 190, 145);position: relative;top: -35px;width: 600px;">
+                    昵称:<input type="submit" id="shangtian3" name="Submit2"
+                        style="border:none; background-color:rgb(148, 209, 148); color:black;" value="默认用户点击改变"
+                        onclick="prom1()" />
+                    <input type="text" id="ritian3"
+                        style="border:none; background-color:rgb(172, 204, 172); color:white;" onclick="prom1()" />
+                    <!--disabled="disabled"-->
+                </div>
+                <div class="box" id="bx">
+                    <textarea id="text1" cols="30" rows="10"></textarea>
+                    <input type="button" value="评论" id="btn1" onclick="ajaxHttpRequestFunc">
+                </div>
+            </div>
+        </div>&nbsp&nbsp&nbsp&nbsp
+        <div class="rightbox">
+            <div class="juse">
+                <div class="fenceng">
+                    <div class="image"><img src="https://img1.doubanio.com/icon/user_normal.jpg" alt=""></div>
+                    &nbsp&nbsp&nbsp&nbsp
+                    <div class="wenziha">252939035<br>2022-01-18加入
+                    </div>
+                </div>
+                <div class="tianjia">(<a href="">添加自我介绍</a>)</div>
+            </div>
+            <div class="empty10"></div>
+            <div class="guangbo">我的广播· · · · · ·(<a href="">全部</a>)</div>
+            <div class="empty11"></div>
+            <div class="lanse"><a href="">&lt我被0人关注</a></div>
+        </div>
+    </div>
+</body>
+<script>
+    var named3;
+    function prom1() {
+
+        var name3 = prompt("请输入您的用户名", "");//将输入的内容赋给变量 name ，
+        named3 = name3;
+        //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+
+        if (named3)//如果返回的有内容
+
+        {
+
+            alert("欢迎您:" + name3)
+            document.getElementById("shangtian3").style.display = "none";
+            document.getElementById("ritian3").value = named3;
+
+        }
+        else {
+            document.getElementById("ritian3").value = "匿名发言者";
+        }
+
+    }
+    window.onload = function () {
+        function $(id) {
+            return document.getElementById(id);
+        }
+        //创造一个ul
+        var ul = document.createElement("ul");
+        $("bx").appendChild(ul);
+        $("btn1").onclick = function () {
+            //  不能用$('text').innerHTML，因为成对的标签才能用innerHTML，获取中间的文字
+            var sum = $("text1").value;
+            if (sum.length == 0) {
+                //评论为空
+                alert("不能发表空评论");
+            } else {
+                //创建li标签
+                var sum2 = document.createElement("li");
+                //将li设为ul的子标签
+                ul.appendChild(sum2);
+                // 每一个li都会放在ul最前面li的前面，按照时间顺序从上到下
+                ul.insertBefore(sum2, ul.children[0]);
+                var d3 = new Date();
+                var s2 = "来自用户:";
+                sum = sum + "<a href='javascript:void(0)'>删除</a>" + "<span class='time'>" + s2 + named3 + d3.getFullYear() + "-" + (d3.getMonth() + 1) + "-" + (d3.getDate()) + " " + (d3.getHours()) + ":" + (d3.getMinutes()) + ":" + (d3.getSeconds()) + "</span>";
+                //将文本放入li中
+                sum2.innerHTML = sum;
+                $("text1").value = "";
+                // 获取所有标签a中的id存入数组中
+                var sum3 = document.getElementsByTagName("a");
+                for (var j = 0; j < sum3.length; j++) {
+                    // 将a设为可点击事件，删除a就是删除‘删除’所在的超链接
+                    sum3[j].onclick = function () {
+                        ul.removeChild(this.parentNode);
+                        var text1 = $("#text1").value;
+                        if (text1) {
+                            $.ajax({
+                                url: "http://121.4.229.95:8080/discussion/:movield/dis_comment/",
+                                headers: {
+                                    "Authorization": localStorage.getItem("text1")
+                                },
+                                type: "delete",
+                                data: text1,
+                                success: function (date) {
+                                    console.log(date);
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    function ajaxHttpRequestFunc() {
+        //创建xmlHttpRequest对象,即一个用于保存异步调用对象的变量
+        let xmlHttpRequest;
+        var text1 = $("#text1").value;
+        if (window.ActiveXObject) {
+            //IE浏览器
+            xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            //netscape浏览器
+        } else if (window.XMLHttpRequest) {
+            xmlHttpRequest = new XMLHttpRequest();
+        }
+        xmlHttpRequest.onreadystatechange = function () {
+            //设置响应http请求状态变化的时间
+            console.log("请求过程", xmlHttpRequest.readyState);
+            if (xmlHttpRequest.readyState == 4) {
+                console.log("状态码为", xmlHttpRequest.status);
+            }
+            if (xmlHttpRequest.status == 200) {
+                console.log("异步调用返回的数据是", xmlHttpRequest.responseText);
+                document.getElementById("text1") = xmlHttpRequest.responseText;
+            } else {
+                alert("error:HTTP状态码为" + xmlHttpRequest.status);
+            }
+        }
+    }
+    xmlHttpRequest.open("GET", "http://121.4.229.95:8080/discussion/:movield/dis_comment", true);
+    xmlHttpRequest.send(null);
+</script>
+<script>
+    function imgputting() {
+        var avatar = new FormData();
+        avatar.append(document.getElementById("imgha").files[0]);
+        $.ajax({
+            url: "http://121.4.229.95:8080/pictures/test.png",
+            headers: {
+                "Authorization": localStorage.getItem("avatar")
+            },
+            type: "POST",
+            data: avatar,
+            processData: false,
+            contentType: "multipart/form-data",
+            success: function (date) {
+                if (date.status) {
+                    var img = document.createElement("img");
+                    img.src = "/" + arg.path;
+                    img.style.width = "60px";
+                    img.style.height = "60px";
+                    $("#imgha").append(img);
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var weizhi = document.getElementById("weizhi");
+    var ziwo = document.getElementById("ziwojie");
+    ziwo.onclick = function () {
+        if (weizhi.style.display == "block") {
+            weizhi.style.display = "none";
+        } else {
+            weizhi.style.display = "block";
+        }
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    $("#gengxinjieshao").on("click", function () {
+        var introduction = $("#jieshao").value;
+        if (introduction) {
+            axios({
+                method: "post",
+                url: "http://121.4.229.95:8090/user/:username",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    "Authorization": localStorage.getItem("introduction")
+                },
+                data: {
+                    introduction: $("#jieshao").value
+                }
+            }).then(function (date) {
+                console.log(date);
+            });
+        }
+    })
+
+</script>
+
+</html>

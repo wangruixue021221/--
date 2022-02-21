@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"> </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js.map"> </script>
+    <script src="http://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>豆瓣电影</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .black {
+            width: 100%;
+            height: 25px;
+            background-color: rgb(68, 68, 68);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .one {
+            width: 600px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .two {
+            width: 200px;
+            height: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .black a {
+            display: block;
+            font-size: 13px;
+            color: rgb(187, 184, 184);
+            text-decoration: none;
+            position: relative;
+            top: 5px;
+        }
+
+        .black a:hover {
+            color: white;
+        }
+
+        .blue {
+            width: 100%;
+            height: 120px;
+            background-color: rgb(245, 246, 248);
+        }
+
+        .big {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            position: relative;
+            top: 20px;
+            left: -200px;
+        }
+
+        .big a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 30px;
+            font-weight: 35px;
+        }
+
+        #sousuo {
+            width: 500px;
+            height: 30px;
+            background-color: white;
+            font-size: 14px;
+            color: gray;
+            border: 0.5px solid rgb(196, 195, 195);
+            position: relative;
+            top: -5px;
+        }
+
+        #btn {
+            width: 30px;
+            height: 30px;
+            background-image: url(img.jfif);
+            background-repeat: no-repeat;
+            background-size: 100% 30px;
+            position: relative;
+            border: 0.5px solid rgb(196, 195, 195);
+            top: 5px;
+        }
+
+        .small {
+            width: 700px;
+            height: 38px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+        }
+
+        .small a {
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(47, 115, 216);
+            position: relative;
+            height: 25px;
+            line-height: 25px;
+            top: 8px;
+            left: 65px;
+        }
+
+        .small a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .niandu {
+            z-index: 2;
+            width: 220px;
+            text-decoration: none;
+            display: block;
+            height: 100px;
+            background-image: url(img2.jfif);
+            background-repeat: no-repeat;
+            background-size: 100% 100px;
+            position: relative;
+            left: 800px;
+            top: -110px;
+        }
+
+        .empty {
+            width: 100%;
+            height: 40px;
+            background-color: white;
+        }
+
+        .bigbox {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            position: relative;
+            top: -100px;
+        }
+
+        .father {
+            width: 700px;
+            position: relative;
+            left: -55px;
+        }
+
+        .mother {
+            width: 250px;
+        }
+
+        .reying {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            font-size: 15px;
+            color: black;
+            position: relative;
+            z-index: 1000000000000000;
+            border-bottom: 0.8px solid gray;
+        }
+
+        .reying a {
+            text-decoration: none;
+            font-size: 14px;
+            color: rgb(47, 115, 216);
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .reying a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .ming1 {
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+            width: 120px;
+            text-align: center;
+        }
+
+        span {
+            font-size: 13px;
+            color: gold;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li a {
+            text-decoration: none;
+        }
+
+        ul li a img {
+            width: 120px;
+            height: 160px;
+        }
+
+        .ming {
+            color: black;
+            font-size: 15px;
+            width: 120px;
+            text-align: center;
+        }
+
+        .ping {
+            color: gold;
+            font-size: 13px;
+            width: 120px;
+            text-align: center;
+        }
+
+        .xuan {
+            width: 75px;
+            height: 30px;
+            background-color: rgb(47, 115, 216);
+            color: white;
+            text-align: center;
+            position: relative;
+            left: 17px;
+        }
+
+        .swiper {
+            width: 700px;
+            height: 210px;
+        }
+
+        .swiper-slide {
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .empty2 {
+            height: 25px;
+        }
+
+        .swiper-button-next {
+            width: 25px;
+            z-index: 2;
+            height: 45px;
+            border-radius: 15%;
+            background-color: blue;
+            color: white;
+            position: absolute;
+            right: 70px;
+            top: -0px;
+
+        }
+
+        .swiper-button-prev {
+            width: 25px;
+            height: 45px;
+            border-radius: 15%;
+            background-color: blue;
+            color: white;
+            position: absolute;
+            left: 550px;
+            top: -0px;
+        }
+
+        .dianying {
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            border-bottom: 0.8px solid gray;
+        }
+
+        .dianying div {
+            color: black;
+            font-size: 16px;
+        }
+
+        .dianying a {
+            text-decoration: none;
+            font-size: 14px;
+            color: gray;
+        }
+
+        .dianying a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        #special {
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+        }
+
+        #special:hover {
+            color: black;
+            background-color: white;
+        }
+
+        #gengduo:hover {
+            color: rgb(47, 115, 216);
+            background-color: white;
+        }
+
+        #gengduo {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            z-index: 2;
+            top: 900px;
+        }
+
+        /* 轮播图盒子样式 */
+        .lunbotu {
+            position: relative;
+            width: 700px;
+            height: 280px;
+            overflow: hidden;
+            z-index: 1000000000000;
+        }
+
+        /* 左右按钮样式 */
+        .left,
+        .right {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 40px;
+            height: 50px;
+            background-color: rgb(201, 198, 198);
+            border-radius: 0%;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            font-size: 40px;
+            font-weight: 18px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+
+            right: 0;
+        }
+
+
+        li {
+            list-style: none;
+        }
+
+        /* 设置图片的ul的样式 */
+        .firstul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 500%;
+
+        }
+
+        .firstul li {
+            float: left;
+            /* display: none; */
+        }
+
+        .firstul li a {
+            text-decoration: none;
+        }
+
+        .firstul li a img {
+            width: 700px;
+            height: 280px;
+        }
+
+        /* 设置小圆圈的样式 */
+        ol {
+            /* width: 90px; */
+            padding: 0 5px 0 5px;
+            position: absolute;
+            bottom: 10px;
+            left: 95%;
+            margin-left: -45px;
+            background-color: transparent;
+            text-align: center;
+            border-radius: 9px;
+        }
+
+        ol li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .current {
+            background-color: black;
+        }
+
+        .have {
+            width: 750px;
+            height: 120px;
+            border-bottom: 0.8px solid gray;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            position: relative;
+            z-index: 10000000000000000000000;
+        }
+
+        .nothing {
+            width: 750px;
+            height: 120px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            position: relative;
+            z-index: 10000000000000000000000;
+        }
+
+        .da {
+            text-decoration: none;
+        }
+
+        .da img {
+            width: 80px;
+            height: 90px;
+            position: relative;
+            top: 20px;
+        }
+
+        .wenzi {
+            width: 600px;
+            height: 120px;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        .dazi a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 16px;
+        }
+
+        .dazi a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .zhongzi {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .zhongzi a {
+            text-decoration: none;
+            font-size: 14px;
+            color: gray;
+        }
+
+        .zhongzi a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .pinglunqu {
+            font-size: 13px;
+            color: black;
+        }
+
+        .pinglunqu a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .pinglunqu a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .sha1 {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            z-index: 10000000000000;
+            position: relative;
+            top: -1760px;
+            left: 170px;
+        }
+
+        .sha2 {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            z-index: 10000000000000;
+            position: relative;
+            top: -1760px;
+            left: 420px;
+        }
+
+        .sha3 {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            z-index: 10000000000000;
+            position: relative;
+            top: -1760px;
+            left: 660px;
+        }
+
+        .dage {
+            font-size: 15px;
+            color: black;
+        }
+
+        .erge {
+            font-size: 13px;
+            color: gray;
+        }
+
+        .sange {
+            font-size: 13px;
+            color: gold;
+        }
+
+        .sige {
+            font-size: 13px;
+            color: black;
+        }
+
+        .bawen {
+            height: 35px;
+            background-color: rgb(225, 230, 235);
+        }
+
+        .bawen a {
+            text-decoration: none;
+            font-size: 15px;
+            color: rgb(47, 115, 216);
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .bawen a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .yizhou {
+            font-size: 17px;
+            color: black;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 0.8px solid gray;
+        }
+
+        .yizhou a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 14px;
+        }
+
+        .li {
+            height: 30px;
+            border-bottom: 0.8px solid rgb(211, 209, 209);
+            line-height: 30px;
+        }
+
+        .li a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 15px;
+        }
+
+        .li a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+
+        .empty4 {
+            height: 50px;
+        }
+
+        .tuijian {
+            height: 30px;
+            line-height: 30px;
+            color: black;
+            font-size: 16px;
+            border-bottom: 0.8px solid rgb(211, 209, 209);
+        }
+
+        .biru {
+            height: 35px;
+            border-bottom: 0.8px solid rgb(211, 209, 209);
+            line-height: 35px;
+            color: gray;
+            font-size: 11px;
+        }
+
+        .biru a {
+            text-decoration: none;
+            color: rgb(47, 115, 216);
+            font-size: 11px;
+        }
+
+        .biru a:hover {
+            background-color: rgb(47, 115, 216);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="black">
+        <div class="one">
+            <a href="">豆瓣</a><a href="">读书</a><a href="">电影</a><a href="">音乐</a><a href="">同城</a><a href="">小组</a><a
+                href="">阅读</a><a href="">FM</a><a href="">时间</a><a href="">豆品</a>
+        </div>
+        <div class="two">
+            <a href="">下载豆瓣客户端</a><a href="登录注册.html" target="_blank">登录/注册</a>
+        </div>
+    </div>
+    <div class="blue">
+        <div class="big">
+            <div><a href="">豆瓣电影</a></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <div class="container">
+                <div class="bgDiv">
+                    <input type="text" name="搜索" id="sousuo" placeholder="搜索电影,电视剧,综艺,影人"><input type="button"
+                        class="searchButton" id="btn">
+                    <div class="suggest">
+                        <ul id="search-result">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="small">
+            <a href="">影讯&购票</a><a href="">选电影</a><a href="">电视剧</a><a href="">排行榜</a><a href="分类选电影.html">分类</a><a
+                href="">影评</a><a href="">2021年度榜单</a><a href="">2021书影音报告</a>
+        </div>
+    </div>
+    <a class="niandu" href=""></a>
+    <div class="empty"></div>
+    <div class="bigbox">
+        <div class="father">
+            <div class="reying">
+                <div>正在热映&nbsp&nbsp&nbsp<a href="">全部正在热映&gt&gt</a>&nbsp&nbsp&nbsp&nbsp<a href="">即将上映&gt&gt</a></div>
+                <div class="jiantou">1/4&nbsp&nbsp<div class="swiper-button-next"></div>&nbsp&nbsp
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="empty2"></div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35505100/?from=showing" id="ha">
+                                    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2814949620.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">这个杀手不太冷静</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9734&#9734&nbsp6.7</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35215390/?from=showing" id="ha1">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2738601191.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">狙击手</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9733&#9734&nbsp7.7</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35312437/?from=showing" id="ha2">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2842327103.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">奇迹.笨小孩</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9733&#9734&nbsp7.4</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35337517/?from=showing">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2867433563.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">四海</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9734&#9734&nbsp5.6</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35144311/?from=showing">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2702755317.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">雄狮少年</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9733&#9734&nbsp8.3</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35683855/?from=showing">
+                                    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2831589600.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">带你去见我妈</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9733&#9734&nbsp7.6</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35636558/?from=showing">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2772730001.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">跨过鸭绿江</li>
+                                    <li class="ping">暂无评分</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35068653/?from=showing">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2770857575.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">误杀2</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9734&#9734&nbsp5.8</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="魔法满屋.html">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2807936075.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming">魔法满屋</li>
+                                    <li class="ping">&#9733&#9733&#9733&#9734&#9734&nbsp6.5</li>
+                                    <li class="xuan">选座购票</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="dianying">
+                <div>最近热门电影&nbsp&nbsp
+                    <a href="" id="special">热门</a>&nbsp&nbsp<a href="">最新</a>&nbsp&nbsp<a href="">豆瓣高分</a>&nbsp&nbsp<a
+                        href="">冷门佳片</a>&nbsp&nbsp<a href="">华语</a>&nbsp&nbsp<a href="">欧美</a>&nbsp&nbsp<a
+                        href="">韩国</a>&nbsp&nbsp<a href="">日本</a>
+                </div>
+                <div><a href="" id="gengduo">更多&gt&gt</a></div>
+            </div>
+            <div class="empty2"></div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/35376457/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2772925591.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">爱情神话<span>8.1</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/35422807/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2724443759.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">扬名立万<span>7.4</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35190036/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2678142009.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">一切顺利<span>7.4</span></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35195869/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2854783787.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">不良后果<span>6.4</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/35144311/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2702755317.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">雄狮少年<span>8.3</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35242938/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2678037153.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">瀑布<span>7.4</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/3078409/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2701416129.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">古驰家族<span>6.5</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35068653/?from=showing">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2770857575.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">误杀2<span>5.8</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="魔法满屋.html">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2807936075.webp"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">魔法满屋<span>6.5</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="empty"></div>
+            <div class="dianying">
+                <div>最近热门电视剧&nbsp&nbsp
+                    <a href="" id="special">热门</a>&nbsp&nbsp<a href="">国产剧</a>&nbsp&nbsp<a href="">综艺</a>&nbsp&nbsp<a
+                        href="">美剧</a>&nbsp&nbsp<a href="">日剧</a>&nbsp&nbsp<a href="">韩剧</a>&nbsp&nbsp<a
+                        href="">日本动画</a>&nbsp&nbsp<a href="">纪录片</a>
+                </div>
+                <div><a href="" id="gengduo">更多&gt&gt</a></div>
+            </div>
+            <div class="empty2"></div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35209701/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2759888858.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">和平使者<span>8.9</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/34927946/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2681362557.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">国王排名<span>9.0</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/35235428/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2782204672.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">对手<span>7.9</span></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/35639198/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2843914677.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">40岁开始<span>8.4</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/35465263/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2829656990.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">超越<span>8.2</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/26361853/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2839651319.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">镀金时代<span>8.7</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/26302614/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2272563445.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">请回答1988<span>9.7</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a
+                                    href="https://movie.douban.com/subject/27034752/?tag=%E7%83%AD%E9%97%A8&from=gaia_video">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2714598385.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">雪中悍刀行<span>5.8</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="q">
+                            <li>
+                                <a href="https://movie.douban.com/subject/34607516/?tag=%E7%83%AD%E9%97%A8&from=gaia">
+                                    <img src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2674746675.jpg"
+                                        alt="">
+                                </a>
+                                <ul>
+                                    <li class="ming1">华灯初上<span>8.1</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="empty"></div>
+            <div class="reying">
+                <div>热门电影</div>
+                <div class="jiantou">1/4</div>
+            </div>
+            <div class="empty2"></div>
+            <div class="lunbotu">
+                <!-- 左右按钮 -->
+                <div class="left">
+                </div>
+                <div class="right">></div>
+                <!-- 图片部分 -->
+                <ul class="firstul">
+                    <li><a href=""><img
+                                src="https://img2.doubanio.com/view/movie_gallery_frame_hot_rec/m/public/48f379736cc4891.jpg"
+                                alt=""></a></li>
+                    <li><a href=""><img
+                                src="https://img1.doubanio.com/view/movie_gallery_frame_hot_rec/m/public/6cc64ffa4e3cd68.jpg"
+                                alt=""></a></li>
+                    <li><a href=""><img
+                                src="https://img9.doubanio.com/view/movie_gallery_frame_hot_rec/m/public/9fa60a39642e964.jpg"
+                                alt=""></a></li>
+                    <li><a href=""><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2829656990.jpg"
+                                alt=""></a></li>
+                </ul>
+                <!-- 小圆圈 -->
+                <ol class="firstol"></ol>
+            </div>
+            <div class="empty"></div>
+            <div class="reying">
+                <div>最受欢迎的影评&nbsp&nbsp&nbsp<a href="">更多热门影评&gt&gt</a>&nbsp&nbsp&nbsp&nbsp<a href="">新片影评&gt&gt</a>
+                </div>
+            </div>
+            <div class="empty2"></div>
+            <div class="have">
+                <div><a href="https://movie.douban.com/subject/3001114/?from=reviews" class="da"><img
+                            src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2687443734.webp"></img></a>
+                </div>
+                <div class="wenzi">
+                    <div class="dazi"><a href="">《沙丘》里的BDO:为何巨大沉默物让我们战栗</a></div>
+                    <div class="zhongzi"><a href="">未来事务管理局</a>评论<a href="">《沙丘》</a>&#9733&#9733&#9733&#9733&#9734
+                    </div>
+                    <div class="pinglunqu">几百公里、巨大沉默的生物在地表下游走光滑、完美又巨大的几何体在宇宙中疾驰边长绝对精确的沉默巨石在地球伫立万年
+                        “还有什么比这些景象更让人肃然起敬、毛骨悚然?” [本文部分整理自铥铥科幻电波V... (<a href="">全部</a>)</div>
+                </div>
+            </div>
+            <div class="have">
+                <div><a href="https://movie.douban.com/subject/30382416/?from=reviews" class="da"><img
+                            src="https://img3.doubanio.com/f/movie/54a69da17972770faffce1f758c820ecb8e440af/pics/movie/grey.gif"></img></a>
+                </div>
+                <div class="wenzi">
+                    <div class="dazi"><a href="">《毒液2》影评+彩蛋解析!最后核爆级彩蛋要不要玩这么大!</a></div>
+                    <div class="zhongzi"><a href="">大聪</a>评论<a href="">《毒液2》</a>&#9733&#9733&#9733&#9734&#9734</div>
+                    <div class="pinglunqu">YO,毒液毒液毒液!来了! 先说个好玩的,我好奇翻看我三年前写的《毒液》点评解析,题就写着“开启蜘蛛侠宇宙”,现在想想当时起这标题写得也是够大胆。
+                        ANYWAY,不要翻回去那一期了,当时刚做视频不久,现在...(<a href="">全部</a>)</div>
+                </div>
+            </div>
+            <div class="have">
+                <div><a href="https://movie.douban.com/subject/35419225/?from=reviews" class="da"><img
+                            src="https://img3.doubanio.com/f/movie/54a69da17972770faffce1f758c820ecb8e440af/pics/movie/grey.gif"></img></a>
+                </div>
+                <div class="wenzi">
+                    <div class="dazi"><a href="">算是值得一看的片子</a></div>
+                    <div class="zhongzi"><a href="">taotao</a>评论<a href="">《风信子之恋》</a>&#9733&#9733&#9733&#9733&#9734
+                    </div>
+                    <div class="pinglunqu">让人有些意犹未尽的片子,不过我还是给出了5星。
+                        看电影先看时代背景,1980s的波兰华沙正从1944-1945华沙起义后重建恢复。华沙起义失败,整座城市被作困兽之斗的纳粹德国无情摧毁。四十年过去,战火中被夷为平地...(<a
+                            href="">全部</a>)</div>
+                </div>
+            </div>
+            <div class="nothing">
+                <div><a href="https://movie.douban.com/subject/1303444/?from=reviews" class="da"><img
+                            src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1148223520.webp"></img></a>
+                </div>
+                <div class="wenzi">
+                    <div class="dazi"><a href="">关于阿巴斯电影的两点思考</a></div>
+                    <div class="zhongzi"><a href="">annihilator</a>评论<a href="">《随风而逝》</a>&#9733&#9733&#9733&#9733&#9733
+                    </div>
+                    <div class="pinglunqu">作为伊朗电影艺术的代表人物、亚洲电影大师、以及学术界公认最重要的当代电影作者之一,已故的伊朗导演阿巴斯·基亚罗斯塔米显然值得一切热情的赞誉。
+                        但必须承认的是,戈达尔于上世纪90年代就阿巴斯的艺术成就所... (<a href="">全部</a>)</div>
+                </div>
+            </div>
+            <div class="sha1">
+                <span class="dage">这个杀手不太冷静&nbsp<span class="erge">2022</span></span><br><span
+                    class="sange">&#9733&#9733&#9733&#9734&#9734&nbsp6.6<span
+                        class="sige">(174271人评价)</span></span><br><span
+                    class="sige">109分钟&nbsp&nbsp中国大陆·</span><br><span class="sige">导演:邢文雄</span><br><span
+                    class="sige">主演:马丽/魏翔/陈明昊</span>
+            </div>
+            <div class="sha2">
+                <span class="dage">狙击手&nbsp<span class="erge">2022</span></span><br><span
+                    class="sange">&#9733&#9733&#9733&#9733&#9734&nbsp7.7<span
+                        class="sige">(88863人评价)</span></span><br><span class="sige">96分钟&nbsp&nbsp中国大陆·</span><br><span
+                    class="sige">导演:张艺谋</span><br><span class="sige">主演:陈永胜/章宇/张译</span>
+            </div>
+            <div class="sha3">
+                <span class="dage">奇迹.笨小孩&nbsp<span class="erge">2022</span></span><br><span
+                    class="sange">&#9733&#9733&#9733&#9734&#9734&nbsp7.4<span
+                        class="sige">(191591人评价)</span></span><br><span
+                    class="sige">106分钟&nbsp&nbsp中国大陆·</span><br><span class="sige">导演:文牧野</span><br><span
+                    class="sige">主演:易烊千玺/田雨/陈哈琳</span>
+            </div>
+        </div>&nbsp&nbsp&nbsp&nbsp
+        <div class="mother">
+            <div class="bawen"><a href="">豆瓣电影评分八问</a></div>
+            <div class="empty3"></div>
+            <div class="yizhou">一周口碑榜&nbsp&nbsp<a href="">更多榜单&gt&gt</a></div>
+            <ul id="ol">
+                <li class="li">1&nbsp&nbsp<a href="">法比安</a></li>
+                <li class="li">2&nbsp&nbsp<a href="">在街上</a></li>
+                <li class="li">3&nbsp&nbsp<a href="">正发生</a></li>
+                <li class="li">4&nbsp&nbsp<a href="">枕刀歌之尘世行</a></li>
+                <li class="li">5&nbsp&nbsp<a href="">瀑布</a></li>
+                <li class="li">6&nbsp&nbsp<a href="">向着明亮那方</a></li>
+                <li class="li">7&nbsp&nbsp<a href="">慕尼黑:战争边缘</a></li>
+                <li class="li">8&nbsp&nbsp<a href="">大写的印刷体</a></li>
+                <li class="li">9&nbsp&nbsp<a href="">一个英雄</a></li>
+                <li class="li">10&nbsp&nbsp<a href="">安稳觉</a></li>
+            </ul>
+            <div class="empty4"></div>
+            <div class="tuijian">
+                热门片单
+            </div>
+            <div class="biru"><a href="">英国权威电影杂志《视与听》每月最佳影片</a>138推荐</div>
+            <div class="biru"><a href="">异类们的异世界★有梦不死 幻想不止③</a>&nbsp&nbsp&nbsp110推荐</div>
+        </div>
+    </div>
+</body>
+<script src="../package/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 8500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        loopFillGroupWithBlank: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+<script>
+    var lunbotu = document.querySelector('.lunbotu');
+    var leftBox = document.querySelector('.left');
+    var rightBox = document.querySelector('.right');
+    var ul = lunbotu.querySelector('ul');
+    var ol = lunbotu.querySelector('ol');
+    var right = document.querySelector('.right');
+    var left = document.querySelector('.left');
+    var lunbotuWidth = lunbotu.offsetWidth;
+    // console.log(ul)
+    // console.log(ol)
+    // 第一步：
+    // 鼠标经过轮播图的时候，左右小按钮弹出
+    lunbotu.addEventListener('mouseenter', function () {
+        leftBox.style.display = 'block';
+        rightBox.style.display = 'block';
+        // 鼠标经过轮播图的时候，停止定时器
+        clearInterval(timer);
+    })
+    // 鼠标离开轮播图的时候，左右小按钮隐藏
+    lunbotu.addEventListener('mouseleave', function () {
+        leftBox.style.display = 'none';
+        rightBox.style.display = 'none';
+        timer = setInterval(function () {
+            right.click();
+        }, 3000)
+
+    })
+    // 第二步：
+    // 1.动态生成小圆圈
+    // 2.小圆圈的个数要跟图片一样
+    // 3.先得到ul里面图片的张数(图片放入li里面，所以就是li的个数)
+    // 4.利用循环动态生成小圆圈(这个小圆圈要放入ol里面)
+    // 5.创建节点createElement('li')]
+    // 6.插入节点ol.appendChild(li)
+    // 7.第一个小圆圈需要添加current类
+    for (var i = 0; i < ul.children.length; i++) {
+        // 创建一个li
+        var li = document.createElement('li')
+        // 记录当前小圆圈的索引号 通过自定义属性来做
+        li.setAttribute('index', i);
+        // 把li添加到ol
+        ol.appendChild(li);
+    }
+    // 排他思想：让小Li变白色
+    for (var i = 0; i < ol.children.length; i++) {
+        ol.children[i].addEventListener('click', function () {
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            } this.className = 'current';
+
+            // 点击小圆圈的时候切换到对应的图片
+            // 得到索引号 index
+            var index = this.getAttribute('index');
+            // 解决小bug
+            num = index;
+            num_ol = index;
+            // console.log(lunbotuWidth);
+            // console.log(index)
+            animation(ul, - index * lunbotuWidth)
+        })
+    }
+    // 给第一个li变颜色
+    ol.children[0].className = 'current';
+    // 克隆第一个li
+    var first = ul.children[0].cloneNode(true);
+    ul.appendChild(first);
+    // 第三步:
+    // 点击右边按钮事件
+    var num = 0;
+    // 点击右侧按钮的时候小圆圈跟着滚动
+    var num_ol = 0;
+    // 节流阀，防止点击过快，最后才加这句优化
+    var flag = true;
+    // 右侧按钮：
+    right.addEventListener('click', function () {
+        if (flag) {
+            flag = false; // 关闭节流阀
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0;
+                num = 0;
+            }
+            num++;
+            animation(ul, -num * lunbotuWidth, function () {
+                flag = true;
+            });
+            num_ol++;
+            if (num_ol == ol.children.length) {
+                num_ol = 0
+            }
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            ol.children[num_ol].className = 'current';
+        }
+    });
+    // 左侧按钮：
+    left.addEventListener('click', function () {
+        if (flag) {
+            flag = false;
+            if (num == 0) {
+                ul.style.left = -(ul.children.length - 1) * lunbotuWidth + 'px';
+                num = ul.children.length - 1;
+            }
+            num--;
+            animation(ul, -num * lunbotuWidth, function () {
+                flag = true;
+            });
+            num_ol--;
+            // num_ol=0的时候需要，点击左侧按钮，需要转跳到ol.children.length-1的位置
+            if (num_ol < 0) {
+                num_ol = ol.children.length - 1
+            }
+            for (var i = 0; i < ol.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            ol.children[num_ol].className = 'current';
+        }
+    });
+    // 自动播放图片
+    var timer = setInterval(function () {
+        right.click();
+    }, 3000)
+</script>
+<script>
+    // 封装了一个动画js文件
+    function animation(obj, target, fn1) {
+        // console.log(fn1);
+        // fn是一个回调函数，在定时器结束的时候添加
+        // 每次开定时器之前先清除掉定时器
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            // 步长计算公式 越来越小
+            // 步长取整
+            var step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+            if (obj.offsetLeft == target) {
+                clearInterval(obj.timer);
+                // 如果fn1存在，调用fn
+                if (fn1) {
+                    fn1();
+                }
+            } else {
+                // 每30毫秒就将新的值给obj.left
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }
+        }, 30)
+    }
+</script>
+<script>
+    $(".sha1").hide();
+    $(document).ready(function () {
+        $("#ha").mouseenter(function () {
+            $(".sha1").show();
+        });
+        $(".sha1").mouseenter(function () {
+            $(".sha1").show();
+        });
+        $("#ha").mouseleave(function () {
+            $(".sha1").hide();
+        });
+        $(".sha1").mouseleave(function () {
+            $(".sha1").hide();
+        });
+    })
+    $(".sha2").hide();
+    $(document).ready(function () {
+        $("#ha1").mouseenter(function () {
+            $(".sha2").show();
+        });
+        $(".sha2").mouseenter(function () {
+            $(".sha2").show();
+        });
+        $("#ha1").mouseleave(function () {
+            $(".sha2").hide();
+        });
+        $(".sha2").mouseleave(function () {
+            $(".sha2").hide();
+        });
+    })
+    $(".sha3").hide();
+    $(document).ready(function () {
+        $("#ha2").mouseenter(function () {
+            $(".sha3").show();
+        });
+        $(".sha3").mouseenter(function () {
+            $(".sha3").show();
+        });
+        $("#ha2").mouseleave(function () {
+            $(".sha3").hide();
+        });
+        $(".sha3").mouseleave(function () {
+            $(".sha3").hide();
+        });
+    })
+</script>
+<script>
+    var suggestContainer = document.getElementsByClassName("suggest")[0];
+    var searchInput = document.getElementById("sousuo");
+    var bgDiv = document.getElementsByClassName("bgDiv")[0];
+    var searchResult = document.getElementsById("search-result");
+    //清除建议框内容
+    function clearContent() {
+        var size = searchResult.childNodes.length;
+        for (var i = size - 1; i >= 0; i++) {
+            searchResult.removeChild(searchResult.childNodes[i]);
+        }
+    };
+    var time = null;
+    //注册输入框键盘抬起事件
+    searchInput.onkeyup = function (e) {
+        suggestContainer.style.display = "block";
+        //如果搜索框内容为空，清除内容且无需跨域请求
+        if (this.value.length == 0) {
+            clearContent();
+            return;
+        }
+        if (this.time) {
+            clearTimeout(this.time);
+        }
+        if (e.keyCode != 40 && e.keyCode != 38) {
+            //函数节流优化
+            this.time = setTimeout(() => {
+                //创建script跨域
+                var script = document.createElement("script");
+                script.src = "http://121.4.229.95:8080/movieGet/search" + encodeURI(this.value.trim(""));
+                document.body.appendChild(script);
+            }, 130)
+        }
+    };
+    //回调函数处理函数值
+    function handleSuggestion(res) {
+        //清空之前的数据
+        clearContent();
+        var result = res.s;
+        //截取前五个建议项
+        if (result.length > 4) {
+            result = result.slice(0, 5);
+        }
+        for (let i = 0; i < result.length; i++) {
+            //动态建立li标签
+            var liObj = document.createElement("li");
+            liObj.innerHTML = result[i];
+            searchResult.appendChild(liObj);
+        }
+        //自执行匿名函数，删除用于跨域的script标签
+        (function () {
+            var s = document.querySelectorAll("script");
+            for (var i = 1, len = s.length; i < len; i++) {
+                document.body.removeChild(s[i]);
+            }
+        })()
+    };
+    function jumpPage() {
+        window.open(`=${encodeURI(searchInput.value)}`);
+    }
+    //事件委托
+    bgDiv.addEventListener("click", function (e) {
+        if (e.target.nodeName.toLowerCase() === "li") {
+            var keyWords = e.target.innerText;
+            searchInput.value = keyWords;
+            jumpPage();
+        } else if (e.target.id == "btn") {
+            jumpPage();
+        }
+    }, false);
+    var i = 0;
+    var flag = 1;
+    //事件委托，键盘监听事件
+    bgDiv.addEventListener("keydown", function (e) {
+        var size = searchResult.childNodes.length;
+        if (e.keyCode === 13) {
+            jumpPage();
+        };
+        //键盘向下事件
+        if (e.keyCode === 40) {
+            if (flag === 0) {
+                i = i + 2;
+            }
+            flag = 1;
+            e.preventDefault();
+            if (i >= size) {
+                i = 0;
+            }
+            if (i < size) {
+                searchInput.value = searchResult.childNodes[i++].innerText;
+            }
+        };
+        //键盘向上事件
+        if (e.keyCode === 38) {
+            if (flag === 1) {
+                i = i - 2;
+            }
+            flag = 0;
+            e.preventDefault();
+            if (i < 0) {
+                i = size - 1;
+            }
+            if (i > -1) {
+                searchInput.value = searchResult.childNodes[i--].innerText;
+            }
+        };
+    }, false)
+    //点击页面其他地方，结果搜索框消失
+    document.onclick = () => {
+        clearContent();
+    }
+</script>
+<script>
+    var leng = document.getElementsByClassName("q");
+    for (let i = 0; i < leng.length; i++) {
+        leng[i].onclick = function () {
+            $.ajax({
+                type: "GET",
+                url: "http://121.4.229.95:8080/movieGet/:movield",
+                data: {
+                    movie: leng[i].children(0).children(0).attr("href")
+                },
+                success: function (date) {
+                    console.log(date)
+                },
+            });
+        }
+    }
+</script>
+
+</html>
