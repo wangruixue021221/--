@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const func = function (msg) {
+        console.log(msg);
+    }
+    func.before = function (msg) {
+        //to do
+    }
+    func.before = function (msg) {
+        if (msg.indexOf("init") >= 0)
+            console.log("init done");
+    }
+    func("init");
+</script>
+<script>
+    const func1 = function (msg1) {
+        console.log(msg1);
+    }
+    func.after = function (msg1) {
+        //to do
+    }
+    func.after = function (msg1) {
+        if (msg1.indexOf("init1") >= 0)
+            console.log("init1 done");
+    }
+    func("init1"); 
+</script>
+
+</html>

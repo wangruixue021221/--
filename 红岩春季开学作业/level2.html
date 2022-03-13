@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <script>
+        let text = document.getElementById("text");
+        function count() {
+            console.log(123);
+        };
+        var timer;
+        var judge = true;
+        text.addEventListener("input", function (e) {
+            if (judge) {
+                //target事件就是会自动判断我们点的是哪个元素
+                console.log("发送到后台,看用户是否已经注册", e.target.value);
+                judge = false;
+            } else {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    console.log("发送到后台,看用户是否已经注册", e.target.value);
+                }, 1000)
+            }
+            //每次输入就清空定时器，一直输入就一直清除，下面的console.log就永远不会触发，直到不输入一秒后才触发
+        }, false);
+    </script>
+</body>
+<script>
+    var arr = [
+        { name="a", id=1 },
+        { name="b", id=2 },
+        { name="c", id=3 },
+    ];
+    function tree(object, perent) {
+        let treeList = [];
+        object.map((res, index) => {
+            if (res.pid === parent) {
+                // 第一次循环表示有多少符合条件的一级
+                //拿到符合条件对象
+                let obj = res;
+                //拿到父级id 递归 对比pid
+                temp = tree(object, obj.id);
+                //比如拿到id=1，进入递归，对比res.pid===1,拿到结果
+                if (temp.length > 0) {
+                    //查询有结果就赋值
+                    obj.children = temp;
+                }
+                treeList.push(obj);
+            }
+        })
+        return treeList;
+    }
+    //数组0为默认的父级id
+    console.log(tree(arr, 0));
+    var list = [1, 21, 2, 12];
+    for (let i = 0; i < list.length; i++) {
+        for (let j = 0; j < list.length; j++) {
+            let a = null;
+            if (list[i] < list[j]) {
+                a = list[i];
+                list[i] = list[j];
+                list[j] = a;
+            }
+        }
+    }
+    function debounce(func, wait) {
+        let timeout;
+        return function () {
+            const content = this;
+            const aggs = [...arguments];
+            if (timeout) clearTimeout(timer)
+            timeout = setTimeout(() => {
+                func.apply(content, aggs);
+            }, wait);
+        }
+    }
+    function throttle(e) {
+        var previous = 0;
+        return function () {
+            let now = Date.now();
+            let content = this;
+            let args = arguments;
+            if (now - previous > 1000) {
+                previous = now;
+                console.log(e);
+            }
+        }
+    }
+</script>
+
+</html>

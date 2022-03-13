@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //Array.prototype.map
+    function map(arr, mapCallback) {
+        //首先检查传参是否正确
+        if (!Array.isArray(arr) || !arr.length || typeof mapCallback !== "function") {
+            return [];
+        } else {
+            let result = [];
+            //每次调用，都会创建一个redult数组
+            //因为不想改变原数组
+            for (let i = 0, len = arr.length; i < len; i++) {
+                result.push(mapCallback(arr[i], i, arr));
+                //将mapCallback返回的结果push到result里面去
+            }
+            return result;
+        }
+    }
+    //Array.prototype.filter
+    Array.prototype.filter = function (cd, context) {
+        //确定上下文,默认this
+        context = context || this;
+        //数组的长度
+        var len = this.length;
+        //最终返回的结果数组
+        var r = [];
+        for (let i = 0; i < len.length; i++) {
+            //filter三个参数：元素值，元素索引，原数组
+            if (cd.call(context, this[i], i, this)) {
+                r.push(this[i]);
+            }
+        }
+        return r;
+    }
+    //Array.prototype.reduce
+    Array.prototype.selfReduce = function () {
+        const ary = this;
+        const { length } = ary;
+        const callBack = arguments[0];
+        //如果有初始值，就从数组第0项开始循环，如果没有初始值，就把数组第0项作为初始值，从第一项开式循环
+        const startIndex = arguments.length >= 2 ? 0 : 1;
+        let value = startIndex === 0 ? arguments[1] : ary[0];
+        for (let i = startIndex; i < length; i++) {
+            value = callBack(value, ary[i], i, ary);
+        }
+        return value;
+    }
+    let arr = [1, 2, 3, 4];
+    let result = arr.selfReduce(function (sum, item) {
+        return sum + item;
+    }, 10);
+    console.log(result);
+</script>
+
+</html>
