@@ -11,7 +11,7 @@ function Module(path) {
     this.exports = {};
 }
 Module.wrapper = ['(function(exports,require,module,__filename,__dirname){', '})'];
-Module.extension = {
+Module.extensions = {
     '.js': function (module) {
         let content = fs.readFileSync(module.id, 'utf-8');
         let fnStr = Module.wrapper[0] + content + Module.wrapper[1];
