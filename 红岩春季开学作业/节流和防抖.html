@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //防抖,不管你触发多少次，都等到你最后触发后过一段你指定的时间才触发
+    function debounce(func, wait) {
+        var timer
+        return function () {
+            var context = this
+            var args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+                func.apply(context, args)
+            }, wait)
+        }
+    }
+    //节流,不管怎么触发，都是按照指定的间隔来执行
+    function throttle(func, wait) {
+        var timer
+        return function () {
+            var context = this
+            var args = arguments
+            if (!timer) {
+                timer = setTimeout(function () {
+                    timer = null
+                    func.apply(context, args)
+                }, wait)
+            }
+        }
+    }
+</script>
+
+</html>
