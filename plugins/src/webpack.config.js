@@ -6,7 +6,7 @@ module.exports = {
         main: "./src/index.js"
     },
     plugins: [
-        new copyrightwebpackplugin({
+        new CopyrightWebpackPlugin({
             name: "pluginParams"
         })
     ],
