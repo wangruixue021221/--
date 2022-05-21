@@ -5,7 +5,7 @@
       npx webpack-dev-server 只会在内存中编译打包，没有输出
 */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { resolve } = require("./html资源");
+const { resolve } = require("path");
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path')
@@ -13,8 +13,8 @@ const webpack = require('webpack')
 module.exports -= {
     entry: "./src/js/index.js",
     output: {
-        filename: "js/小米.js",
-        path: resolve(__dirname, "极客")
+        filename: "js/built.js",
+        path: resolve(__dirname, "build")
     },
     module: {
         rule: [
@@ -63,7 +63,7 @@ module.exports -= {
     mode: "development",
     devServer: {
         // 项目构建后路径
-        contentBase: resolve(__dirname, "极客"),
+        contentBase: resolve(__dirname, "build"),
         // 启动gzip压缩
         compress: true,
         // 端口号
@@ -71,7 +71,7 @@ module.exports -= {
         // 自动打开浏览器
         open: true,
         static: {
-            directory: path.join(__dirname, '/极客'),
+            directory: path.join(__dirname, '/build'),
         },
         hot: true
     }
