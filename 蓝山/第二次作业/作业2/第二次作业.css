@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.black2{
+    width: 660px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 2%;
+    position: absolute;
+    border: 5px solid transparent;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.black1{
+    width: 640px;
+    height: 680px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left{
+    width: 480px;
+    height: 680px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.right{
+    width: 140px;
+    height: 680px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.top{
+    width: 480px;
+    height: 330px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.bottom{
+    width: 480px;
+    height: 330px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.fen{
+    width: 140px;
+    height: 330px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.image1{
+    width: 140px;
+    height: 140px;
+    background-image: url(p2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.image2{
+    width: 140px;
+    height: 140px;
+    background-image: url(p3.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.image3{
+    width: 140px;
+    height: 140px;
+    background-image: url(p4.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.big{
+    width: 320px;
+    height: 330px;
+    background-color: rgb(36, 34, 34);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.zhongjianda{
+    width: 275px;
+    height: 210px;
+    color: gray;
+    font-size: 30px;
+}
+.wenzi{
+    width: 140px;
+    height: 140px;
+    background-color: rgb(33, 31, 31);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.zhongjian{
+    width: 120px;
+    height: 100px;
+    color: gray;
+    font-size: 11px;
+}
+#yi{
+    position: relative;
+    top: 10px;
+}
+#yi1{
+    position: relative;
+    top: -10px;
+}
